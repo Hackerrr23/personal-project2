@@ -1,0 +1,18 @@
+/* body {
+
+} */
+main {
+    /* width: 60vw; */
+    background-image: url("https://www.rentcafe.com/blog/wp-content/uploads/2018/09/roommates-apps-featured.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width:50vw;
+    height:50vh;
+    margin: auto;
+    margin-top: 265px;
+    /* margin:auto; */
+    /* margin-top:165px; */
+    text-align: center;
+    color: yellow;
+    margin-top:0;
+}

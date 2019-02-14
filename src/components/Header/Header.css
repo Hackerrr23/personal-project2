@@ -1,0 +1,6 @@
+nav {
+    display: flex;
+    background: rgb(70,187,241);
+    color: red;
+    justify-content: space-between;
+}
