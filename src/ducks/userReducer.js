@@ -12,7 +12,7 @@ const UPDATE_PASSWORD = "UPDATE_PASSWORD";
 const UPDATE_EMAIL = "UPDATE_EMAIL";
 const REGISTER = "REGISTER";
 const LOGIN = "LOGIN";
-const GET_USER = "GET_USER";
+// const CURRENT_PREF = "CURRENT_PREF";
 const INSERT_PREF = "INSERT_PREF";
 
 export const updateUsername = username => {
@@ -36,6 +36,7 @@ export const updatePassword = password => {
 };
 
 export const register = (username, password, email) => {
+  console.log(username, password, email)
   return {
     type: REGISTER,
     payload: axios.post("/api/signup", { username, password, email })
@@ -48,22 +49,27 @@ export const login = (username, password) => {
     payload: axios.post("/api/signin", { username, password })
   };
 };
-export const insertPref = (rooms,gender,smoke,pets,profession,bio) => {
+export const insertPref = (rooms,gender,smoke,pets,profession,bio,user_id) => {
+  console.log("insert pref hit")
   return {
-    type: LOGIN,
-    payload: axios.post("/api/pref", { rooms,gender,smoke,pets,profession,bio})
+    type: INSERT_PREF,
+    payload: axios.post("/api/pref", { rooms,gender,smoke,pets,profession,bio,user_id})
   };
 }
-export const getUser = () => {
-  return {
-    type: GET_USER,
-    payload: axios.get("/api/me")
-  };
-};
+
+// export const getCurrentPref = () => {
+//   console.log("current pref hit")
+//   console.log(initialState.user.id)
+//   return {
+//     type: CURRENT_PREF,
+//     payload: axios.get(`/api/current/${initialState.user.id}`)
+//   };
+// };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USERNAME:
+    console.log(action.payload)
       return {
         ...state,
         username: action.payload
@@ -89,11 +95,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         user: action.payload.data
       };
-    case `${GET_USER}_FULFILLED`:
-      return {
-        ...state,
-        user: action.payload.data
-      };
+    // case `${CURRENT_PREF}_FULFILLED`:
+    //   return {
+    //     ...state,
+    //     pref: action.payload.data
+    //   };
       case `${INSERT_PREF}_FULFILLED`:
       return {
         ...state,

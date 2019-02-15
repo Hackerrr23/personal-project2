@@ -7,7 +7,7 @@ export class Register extends Component {
      addAndClear  = ()  =>{
         const {username,password,user,email} = this.props
             this.props.register(username,password,email);
-            console.log(user)
+            console.log(username,password,email)
         }
     render() {
             
@@ -25,7 +25,7 @@ export class Register extends Component {
             <label htmlFor="email">Email</label>
             <input type="text" value={this.props.email} onChange={(e)=> this.props.updateEmail(e.target.value)} />
  
-            <Link to = "/home"> 
+            <Link to = "/mypref"> 
                 <button onClick={() => this.addAndClear()}>Confirm and Complete</button>
             </Link>  
         </form>
@@ -33,7 +33,7 @@ export class Register extends Component {
   }
 }
 const maptStateToProps = state => {
-    const {username,password,email} = state
+    const {username,password,email} = state.reducer
     return {
         username,password,email
     }

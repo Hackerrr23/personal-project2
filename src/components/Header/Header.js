@@ -20,9 +20,9 @@ class Header extends Component {
           {this.props.user.username ? (
           <>
             <ul>
-              <li>See Others</li>
-              <li>Your Profile</li>
-              <li>Postings</li>
+              <Link to="/home"><li>See Others</li></Link>
+              <Link to="/current"><li>Your Profile</li></Link>
+              <Link to="/about"><li>Postings</li></Link>
             </ul>
           </>
           ) : (<p>test</p>

@@ -36,7 +36,7 @@ module.exports = {
       if (!user) {
         res.status(500).json("You need to register");
       }
-      const isAuthed = await bcrypt.compare(password, user.password);
+      const isAuthed = await bcrypt.compare(req.body.password, user.password);
       if(!isAuthed) {
         res.status(500).json("Incorrect Password");
       }
@@ -45,6 +45,7 @@ module.exports = {
         id: user.id,
         username: user.username
       }
+      // console.log(req.session)
       res.status(200).json(req.session.user);
 
     } catch(err) {
@@ -57,12 +58,5 @@ module.exports = {
     req.session.destroy();
     res.status(200).json(req.session);
   },
-  me : (req,res) => {
-    if(req.session.user){
-        console.log(req.session)
-        res.json(req.session.user)
-    } else {
-        res.status(401).json({error: "please login"})
-    }
-}
+ 
 }

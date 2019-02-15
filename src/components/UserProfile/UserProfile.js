@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {connect} from "react-redux"
 import { Link } from "react-router-dom";
 class UserProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: [],
-      sting: "hi"
+      pref2: ""
     };
   }
   componentDidMount() {
@@ -25,7 +26,7 @@ class UserProfile extends Component {
   };
   render() {
     const usersList = this.state.user.map(item => {
-      console.log(this.props);
+      // console.log(this.props);
       const { user } = this.props;
       return (
         <div className="compare" key={item.id}>
@@ -37,17 +38,10 @@ class UserProfile extends Component {
             <h3>{item.profession}</h3>
             <h3>{item.bio}</h3>
           </div>
-
-          {/* <div className="profile2">
-            <h3>{user.profession}</h3>
-            <h3>{user.rooms}</h3>
-            <h3>{user.smoke}</h3>
-            <h3>{user.pets}</h3>
-            <h3>{user.bio}</h3>
-          </div> */}
         </div>
       );
     });
+    
     console.log(this.state);
     console.log("sdfosdf");
     return (
@@ -70,10 +64,10 @@ class UserProfile extends Component {
   }
 }
 const mapStateToProps = state => {
-  const { user } = state.userReducer;
+  const { user } = state.reducer;
   return {
     user
   };
 };
 
-export default UserProfile;
+export default connect(mapStateToProps)(UserProfile);

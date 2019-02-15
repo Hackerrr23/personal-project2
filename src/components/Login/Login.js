@@ -42,7 +42,7 @@ export class Login extends Component {
           onChange={e => this.props.updateEmail(e.target.value)}
         />
 
-        <Link to="/home">
+        <Link to="/mypref">
           <button onClick={() => addAndClear()}>Confirm and Complete</button>
         </Link>
       </form>

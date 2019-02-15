@@ -4,8 +4,9 @@ const express = require("express");
 const app = express();
 const { json } = require("body-parser");
 const massive = require('massive');
-const { register,login,me } = require('./controller/auth')
+const { register,login } = require('./controller/auth')
 const { getUsers,userProfile } = require('./controller/users')
+const { preferences,me,currentUserPref } = require('./controller/preferences')
 const session = require("express-session")
 const port = 4000;
 app.use(json());
@@ -30,6 +31,10 @@ app.post("/api/signin", login);
 app.get("/api/users", getUsers);
 app.get("/api/users/:id", userProfile);
 app.get("/api/me", me)
+
+//preferences
+app.post("/api/pref", preferences)
+app.get("/api/current/:id", currentUserPref)
 
  
 
