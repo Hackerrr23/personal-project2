@@ -59,7 +59,7 @@ export const insertPref = (rooms,gender,smoke,pets,profession,bio,user_id) => {
 
 // export const getCurrentPref = () => {
 //   console.log("current pref hit")
-//   console.log(initialState.user.id)
+//   console.log(initialState)
 //   return {
 //     type: CURRENT_PREF,
 //     payload: axios.get(`/api/current/${initialState.user.id}`)

@@ -7,7 +7,7 @@ class UserProfile extends Component {
     super(props);
     this.state = {
       user: [],
-      pref2: ""
+      preff: []
     };
   }
   componentDidMount() {
@@ -19,12 +19,17 @@ class UserProfile extends Component {
         user: res.data
       });
     });
+    const {user} = this.props
+    axios.get(`/api/current/${user.id}`).then( res => {
+      this.setState({preff: res.data})
+    });
   }
-
+  
   showTextArea = () => {
     //display text area
   };
   render() {
+    console.log(this.props)
     const usersList = this.state.user.map(item => {
       // console.log(this.props);
       const { user } = this.props;
@@ -41,13 +46,26 @@ class UserProfile extends Component {
         </div>
       );
     });
-    
+    const currentInfo = this.state.preff.map(preference => {
+      return <div key={preference.id}>
+        <h1>These are your roomate preferences...</h1>
+        <h3>{preference.rooms}</h3>
+        <h3>{preference.gender}</h3>
+        <h3>{preference.smoke}</h3>
+        <h3>{preference.pets}</h3>
+        <h3>{preference.profession}</h3>
+        <h3>{preference.bio}</h3>
+
+
+      </div>
+    })
     console.log(this.state);
     console.log("sdfosdf");
     return (
       <div>
         sdfposdfodsfo
         {usersList}
+        {currentInfo}
         <textarea
           name="contact"
           id="conctact-me"
