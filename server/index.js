@@ -44,7 +44,7 @@ app.post("/api/pref", preferences);
 app.get("/api/current/:id", currentUserPref);
 
 //posts
-app.get("/api/createPost", createPost);
+app.post("/api/createPost", createPost);
 app.get("/api/posts", getPosts);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

@@ -19,7 +19,7 @@ export default function postReducer(state = initialState, action) {
       console.log(action.payload);
       return {
         ...state,
-        posts: action.payload
+        posts: action.payload.data
       };
     default:
       return state;

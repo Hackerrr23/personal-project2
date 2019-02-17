@@ -77,7 +77,7 @@ class CreatePost extends Component {
           cols="20"
           rows="10"
         />
-        <button onClick={() => this.handleSubmit(title, type, post, user.id)}>
+        <button onClick={this.handleSubmit}>
           Post
         </button>
         {showPosts}
@@ -90,4 +90,4 @@ const mapStateToProps = state => {
   return { user };
 };
 
-export default connect(mapStateToProps)(CreatePost);
+export default connect(mapStateToProps,{createPost})(CreatePost);
