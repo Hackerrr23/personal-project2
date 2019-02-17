@@ -55,8 +55,6 @@ class UserProfile extends Component {
         <h3>{preference.pets}</h3>
         <h3>{preference.profession}</h3>
         <h3>{preference.bio}</h3>
-
-
       </div>
     })
     console.log(this.state);

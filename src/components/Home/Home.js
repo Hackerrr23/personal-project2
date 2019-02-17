@@ -25,7 +25,7 @@ import {Link} from "react-router-dom"
           <div key={user.id}>
              <Link to={`/users/${user.id}`}><h1>{user.username}</h1></Link>
             <h3>{user.username}</h3>
-            <h3>{user.username}</h3>
+            <h3>{user.gender}</h3>
           </div>
       )
     })

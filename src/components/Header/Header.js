@@ -22,7 +22,7 @@ class Header extends Component {
             <ul>
               <Link to="/home"><li>See Others</li></Link>
               <Link to="/current"><li>Your Profile</li></Link>
-              <Link to="/about"><li>Postings</li></Link>
+              <Link to="/posts"><li>Postings</li></Link>
             </ul>
           </>
           ) : (<p>test</p>

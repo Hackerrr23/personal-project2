@@ -8,6 +8,7 @@ import Home from "./components/Home/Home";
 import UserProfile from "./components/UserProfile/UserProfile";
 import CurrentUser from "./components/CurrentUser/CurrentUser";
 import UserInfo from "./components/UserInfo/UserInfo";
+import Posts from "./components/Posts/CreatePost";
 
 export default (
   <Switch>
@@ -18,5 +19,6 @@ export default (
     <Route path="/users/:id" component={UserProfile} />
     <Route path="/mypref" component={UserInfo} />
     <Route path="/current" component={CurrentUser} />
+    <Route path="/posts" component={Posts} />
   </Switch>
 );
