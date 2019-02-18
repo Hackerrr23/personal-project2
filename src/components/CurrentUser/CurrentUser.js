@@ -1,54 +1,68 @@
-import React, { Component } from 'react'
-// import {getCurrentPref} from "../../ducks/userReducer"
-import axios from 'axios'
-import {connect} from "react-redux"
- class CurrentUser extends Component {
-   constructor(props){
-     super(props)
-     this.state = {
-       pref: []
-     }
-   }
-   componentDidMount(){
-     const {user} = this.props
-     axios.get(`/api/current/${user.id}`).then( res => {
-       this.setState({pref: res.data})
-     });
-     
-   }
+import React, { Component } from "react";
+import { deletePref } from "../../ducks/userReducer";
+import axios from "axios";
+import { connect } from "react-redux";
+class CurrentUser extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pref: []
+    };
+  }
+  componentDidMount() {
+    const { user } = this.props;
+    axios.get(`/api/current/${user.id}`).then(res => {
+      this.setState({ pref: res.data });
+    });
+  }
+  deletePreference = () => {
+    const { user } = this.props;
+    axios.delete(`/api/deletePref/${user.id}`).then(res => {
+      this.setState({
+        pref: res.data
+      });
+    });
+    console.log(user.id);
+    // this.props.deletePref(user.id)
+  };
   render() {
-    console.log(this.props)
-    
-     const currentInfo = this.state.pref.map(preference => {
-       return <div key={preference.id}>
-         <h1>These are your roomate preferences...</h1>
-         <h3>{preference.rooms}</h3>
-         <h3>{preference.gender}</h3>
-         <h3>{preference.smoke}</h3>
-         <h3>{preference.pets}</h3>
-         <h3>{preference.profession}</h3>
-         <h3>{preference.bio}</h3>
+    console.log(this.props);
 
-         <button>Delete Preferences</button>
-         <button>Add More Preferences</button>
+    const currentInfo = this.state.pref.map(preference => {
+      return (
+        <div key={preference.id}>
+          <h1>These are your roomate preferences...</h1>
+          <h3>{preference.rooms}</h3>
+          <h3>{preference.gender}</h3>
+          <h3>{preference.smoke}</h3>
+          <h3>{preference.pets}</h3>
+          <h3>{preference.profession}</h3>
+          <h3>{preference.bio}</h3>
 
-       </div>
-     })
+          <button onClick={this.deletePreference}>
+            Delete Your Preferences
+          </button>
+          <button>Edit Preferences</button>
+        </div>
+      );
+    });
     return (
       <div>
-         hello from current
-         {currentInfo}
+        hello from current
+        {currentInfo}
       </div>
-    )
+    );
   }
 }
 const mapStateToProps = state => {
-  const {user, pref} = state.reducer
-  return {user,pref}
-}
+  const { user, pref } = state.reducer;
+  return { user, pref };
+};
 
-export default connect(mapStateToProps)(CurrentUser)
-
+export default connect(
+  mapStateToProps,
+  { deletePref }
+)(CurrentUser);
 
 // import React, { Component } from "react";
 // import { connect } from "react-redux";

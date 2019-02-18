@@ -28,5 +28,16 @@ module.exports = {
         } else {
             res.status(401).json({error: "please login"})
         }        
-    }
+    },
+    deletePreference: (req, res) => {
+        const db = req.app.get('db');
+     
+        console.log(req.params)
+        db.deleting_pref([req.params.id])
+          .then(response => res.status(200).json(response))
+          .catch(err => {
+            res.status(500).send({ errorMessage: "Something went wrong" });
+            console.log(err);
+          });
+      }
 }

@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { insertPref } from "../../ducks/userReducer";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 class UserInfo extends Component {
   constructor(props) {
-
     super(props);
-    this.state = { 
-       rooms: "One Room",
-       gender: "Male",
-       smoke: "",
-       pets: "Cat",
-       profession: "",
-       bio: ""
-     };
+    this.state = {
+      rooms: "One Room",
+      gender: "Male",
+      smoke: "",
+      pets: "Cat",
+      profession: "",
+      bio: ""
+    };
   }
 
   handleChange = event => {
@@ -25,20 +24,19 @@ class UserInfo extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const {user} = this.props
-    
-    const {rooms,gender,smoke,pets,profession,bio} = this.state
-    
+    const { user } = this.props;
+
+    const { rooms, gender, smoke, pets, profession, bio } = this.state;
+
     // alert("Your favorite flavor is: " + this.state.value);
-    
-    this.props.insertPref(rooms,gender,smoke,pets,profession,bio,user.id);
+
+    this.props.insertPref(rooms, gender, smoke, pets, profession, bio, user.id);
   };
-  
+
   render() {
-  
     // const {user} = this.props
-    console.log(this.props.user)
-    const {rooms,gender,smoke,pets,profession,bio} = this.state
+    console.log(this.props.user);
+    const { rooms, gender, smoke, pets, profession, bio } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
@@ -51,19 +49,25 @@ class UserInfo extends Component {
           </select>
         </label>
 
-         <label>
+        <label>
           Your Gender:
           <select value={gender} name="gender" onChange={this.handleChange}>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
         </label>
+
         <label>
           Do You Smoke:
-            <input name="smoke" value={smoke} onChange={this.handleChange} type="text"/>
-          </label>
+          <input
+            name="smoke"
+            value={smoke}
+            onChange={this.handleChange}
+            type="text"
+          />
+        </label>
 
-            <label>
+        <label>
           Have Any Pets?..
           <select value={pets} name="pets" onChange={this.handleChange}>
             <option value="Cats">Cat</option>
@@ -74,19 +78,35 @@ class UserInfo extends Component {
             <option value="">Rabbit</option>
           </select>
           <label>
-          Your Profession:
-            <input placeholder="What Do you do" name="profession" onChange={this.handleChange} value={profession} type="text"/>
+            Your Profession:
+            <input
+              placeholder="What Do you do"
+              name="profession"
+              onChange={this.handleChange}
+              value={profession}
+              type="text"
+            />
           </label>
         </label>
-        <textarea placeholder="A little more about yourself and your ideal roomate" onChange={this.handleChange} value={bio} name="bio" id="" cols="30" rows="10"></textarea>
-        <Link to="/current"><button onClick={this.handleSubmit}>Submit</button></Link>
+        <textarea
+          placeholder="A little more about yourself and your ideal roomate"
+          onChange={this.handleChange}
+          value={bio}
+          name="bio"
+          id=""
+          cols="30"
+          rows="10"
+        />
+        <Link to="/current">
+          <button onClick={this.handleSubmit}>Submit</button>
+        </Link>
       </form>
     );
   }
 }
 const mapStateToProps = state => {
-  const { pref,user } = state.reducer;
-  return { pref,user };
+  const { pref, user } = state.reducer;
+  return { pref, user };
 };
 
 export default connect(

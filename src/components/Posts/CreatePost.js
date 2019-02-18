@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import { createPost } from "../../ducks/postReducer";
 class CreatePost extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ class CreatePost extends Component {
       type: "Need A Room",
       post: "",
       title: "",
+      comment: "",
       posts: []
     };
   }
@@ -29,20 +30,32 @@ class CreatePost extends Component {
     const { user } = this.props;
     const { title, type, post } = this.state;
     this.props.createPost(title, type, post, user.id);
-
   };
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   // this.props.createComment();
+  // };
+
   render() {
-    const { type, post, title } = this.state;
+    const { type, post, title, comment } = this.state;
     const { user } = this.props;
 
     const showPosts = this.state.posts.map((post, i) => {
       return (
         <div key={post.id}>
-            <h1>{post.username}</h1>
+          <h1>{post.username}</h1>
           <h2>
-          <Link to={`/users/${user.id}`}>{post.title}</Link> ---{post.type}
+            <Link to={`/users/${user.id}`}>{post.title}</Link> ---{post.type}
           </h2>
           <h3>{post.post}</h3>
+          {/* <input
+              type="text"
+              value={comment}
+              onChange={this.handleChange}
+              name="comment"
+              placeholder="comment here"
+            /> */}
+          {/* <button onClick={this.handleSubmit2}>Add a comment</button> */}
         </div>
       );
     });
@@ -77,9 +90,7 @@ class CreatePost extends Component {
           cols="20"
           rows="10"
         />
-        <button onClick={this.handleSubmit}>
-          Post
-        </button>
+        <button onClick={this.handleSubmit}>Post</button>
         {showPosts}
       </div>
     );
@@ -90,4 +101,7 @@ const mapStateToProps = state => {
   return { user };
 };
 
-export default connect(mapStateToProps,{createPost})(CreatePost);
+export default connect(
+  mapStateToProps,
+  { createPost }
+)(CreatePost);

@@ -14,6 +14,7 @@ const REGISTER = "REGISTER";
 const LOGIN = "LOGIN";
 // const CURRENT_PREF = "CURRENT_PREF";
 const INSERT_PREF = "INSERT_PREF";
+const DELETE_PREF = "DELETE_PREF"
 
 export const updateUsername = username => {
   return {
@@ -56,7 +57,14 @@ export const insertPref = (rooms,gender,smoke,pets,profession,bio,user_id) => {
     payload: axios.post("/api/pref", { rooms,gender,smoke,pets,profession,bio,user_id})
   };
 }
-
+export const deletePref = id => {
+  console.log("delete pref hit")
+  console.log(id);
+  return {
+    type: DELETE_PREF,
+    payload: axios.delete(`/api/deletePref/${id}`)
+  }
+}
 // export const getCurrentPref = () => {
 //   console.log("current pref hit")
 //   console.log(initialState)
@@ -105,6 +113,11 @@ export default function reducer(state = initialState, action) {
         ...state,
         pref: action.payload.data
       };
+      case `${DELETE_PREF}_FULFILLED`:
+        return {
+          ...state,
+              pref: action.payload.data
+        };
     default:
       return state;
   }
