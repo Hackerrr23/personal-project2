@@ -23,6 +23,9 @@ class Home extends Component {
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
   handleClick = () => {
     const { gender, type, pets } = this.state;
     axios.get(`/api/filtered?gender=${gender}&pets=${pets}`).then(res => {

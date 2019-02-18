@@ -11,7 +11,9 @@ class CreatePost extends Component {
       post: "",
       title: "",
       comment: "",
-      posts: []
+      comments: [],
+      posts: [],
+      addComment: false
     };
   }
   componentDidMount() {
@@ -21,8 +23,18 @@ class CreatePost extends Component {
         posts: res.data
       });
     });
+    axios.get("/api/comments").then(res => {
+      console.log(res.data);
+      this.setState({
+        comments: res.data
+      });
+    });
   }
   handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+  handleChange2 = event => {
+    console.log(this.state);
     this.setState({ [event.target.name]: event.target.value });
   };
   handleSubmit = event => {
@@ -31,10 +43,17 @@ class CreatePost extends Component {
     const { title, type, post } = this.state;
     this.props.createPost(title, type, post, user.id);
   };
-  // handleSubmit = event => {
-  //   event.preventDefault();
-  //   // this.props.createComment();
-  // };
+  handleSubmit2 = event => {
+    event.preventDefault();
+    const { comment, addComment } = this.state;
+
+    axios.post("/api/createComment", { comment, id: addComment }).then(res => {
+      this.setState({
+        addComment: false,
+        comments: res.data
+      });
+    });
+  };
 
   render() {
     const { type, post, title, comment } = this.state;
@@ -48,14 +67,38 @@ class CreatePost extends Component {
             <Link to={`/users/${user.id}`}>{post.title}</Link> ---{post.type}
           </h2>
           <h3>{post.post}</h3>
-          {/* <input
-              type="text"
-              value={comment}
-              onChange={this.handleChange}
-              name="comment"
-              placeholder="comment here"
-            /> */}
-          {/* <button onClick={this.handleSubmit2}>Add a comment</button> */}
+          <div className="jumbotron-div col s12">
+            <ul className="collection">
+              {this.state.comments.map(comment => {
+                if (post.id === comment.post_id) {
+                  return (
+                    <li
+                      key={comment.id}
+                      className="collection-item left-align purple lighten-2"
+                    >
+                      <p>{comment.comment}</p>
+                    </li>
+                  );
+                }
+              })}
+            </ul>
+          </div>
+          {this.state.addComment === post.id ? (
+            <div>
+              <input
+                type="text"
+                value={comment}
+                onChange={this.handleChange2}
+                name="comment"
+                placeholder="comment here"
+              />
+              <button onClick={this.handleSubmit2}>Post Comment</button>
+            </div>
+          ) : (
+            <button onClick={() => this.setState({ addComment: post.id })}>
+              Add a comment
+            </button>
+          )}
         </div>
       );
     });

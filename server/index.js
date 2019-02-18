@@ -4,8 +4,8 @@ const app = express();
 const { json } = require("body-parser");
 const massive = require("massive");
 const { register, login } = require("./controller/auth");
-const { createComment } = require("./controller/comments");
-const { getUsers, userProfile,filteredUsers } = require("./controller/users");
+const { createComment, getComments } = require("./controller/comments");
+const { getUsers, userProfile, filteredUsers } = require("./controller/users");
 const { createPost, getPosts } = require("./controller/posts");
 const {
   preferences,
@@ -43,7 +43,7 @@ app.get("/api/users", getUsers);
 app.get("/api/users/:id", userProfile);
 app.get("/api/me", me);
 //filtered users
-app.get("/api/filtered",filteredUsers)
+app.get("/api/filtered", filteredUsers);
 
 //preferences
 app.post("/api/pref", preferences);
@@ -54,8 +54,8 @@ app.delete("/api/deletePref/:id", deletePreference);
 app.post("/api/createPost", createPost);
 app.get("/api/posts", getPosts);
 
-
 //comments
-app.get("/api/createComment", createComment);
+app.get("/api/comments", getComments);
+app.post("/api/createComment", createComment);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

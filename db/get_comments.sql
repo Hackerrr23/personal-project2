@@ -1,0 +1,1 @@
+select * from post join comments on post.id = comments.post_id;
