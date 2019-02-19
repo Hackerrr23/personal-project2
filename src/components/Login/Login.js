@@ -42,7 +42,7 @@ export class Login extends Component {
           onChange={e => this.props.updateEmail(e.target.value)}
         />
 
-        <Link to="/mypref">
+        <Link to="/home">
           <button onClick={() => addAndClear()}>Confirm and Complete</button>
         </Link>
       </form>
@@ -50,11 +50,12 @@ export class Login extends Component {
   }
 }
 const maptStateToProps = state => {
-  const { username, password, email } = state.reducer;
+  const { username, password, email, user } = state.reducer;
   return {
     username,
     password,
-    email
+    email,
+    user
   };
 };
 

@@ -13,7 +13,8 @@ class CreatePost extends Component {
       comment: "",
       comments: [],
       posts: [],
-      addComment: false
+      addComment: false,
+      poster: ""
     };
   }
   componentDidMount() {
@@ -41,13 +42,13 @@ class CreatePost extends Component {
     event.preventDefault();
     const { user } = this.props;
     const { title, type, post } = this.state;
-    this.props.createPost(title, type, post, user.id);
   };
   handleSubmit2 = event => {
     event.preventDefault();
-    const { comment, addComment } = this.state;
-
-    axios.post("/api/createComment", { comment, id: addComment }).then(res => {
+    const { comment, addComment,poster } = this.state;
+    const {user} = this.props
+    console.log(this.state.poster);
+    axios.post("/api/createComment", { comment,personCommenting: user.id,poster, id: addComment }).then(res => {
       this.setState({
         addComment: false,
         comments: res.data
@@ -58,6 +59,7 @@ class CreatePost extends Component {
   render() {
     const { type, post, title, comment } = this.state;
     const { user } = this.props;
+    console.log(user.id)
 
     const showPosts = this.state.posts.map((post, i) => {
       return (
@@ -72,12 +74,12 @@ class CreatePost extends Component {
               {this.state.comments.map(comment => {
                 if (post.id === comment.post_id) {
                   return (
-                    <li
+                    <h5
                       key={comment.id}
                       className="collection-item left-align purple lighten-2"
                     >
                       <p>{comment.comment}</p>
-                    </li>
+                    </h5>
                   );
                 }
               })}
@@ -95,7 +97,11 @@ class CreatePost extends Component {
               <button onClick={this.handleSubmit2}>Post Comment</button>
             </div>
           ) : (
-            <button onClick={() => this.setState({ addComment: post.id })}>
+            <button
+              onClick={() =>
+                this.setState({ addComment: post.id, poster: post.user_id })
+              }
+            >
               Add a comment
             </button>
           )}

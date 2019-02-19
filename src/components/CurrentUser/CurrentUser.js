@@ -12,6 +12,8 @@ class CurrentUser extends Component {
   componentDidMount() {
     const { user } = this.props;
     axios.get(`/api/current/${user.id}`).then(res => {
+      console.log(user)
+      console.log(res.data)
       this.setState({ pref: res.data });
     });
   }
@@ -26,7 +28,7 @@ class CurrentUser extends Component {
     // this.props.deletePref(user.id)
   };
   render() {
-    console.log(this.props);
+    console.log(this.props.user.id);
 
     const currentInfo = this.state.pref.map(preference => {
       return (
