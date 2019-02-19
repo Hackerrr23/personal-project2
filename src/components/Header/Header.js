@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 class Header extends Component {
   render() {
     console.log(this.props);
-    
+
     return (
       <div>
         <nav>
@@ -18,14 +18,24 @@ class Header extends Component {
             <span>Find Your Perfect Roomate</span>
           </section>
           {this.props.user.username ? (
-          <>
-            <ul>
-              <Link to="/home"><li>See Others</li></Link>
-              <Link to="/current"><li>Your Profile</li></Link>
-              <Link to="/posts"><li>Postings</li></Link>
-            </ul>
-          </>
-          ) : (<p>test</p>
+            <>
+              <ul>
+                <Link to="/home">
+                  <li>See Others</li>
+                </Link>
+                <Link to="/current">
+                  <li>Your Profile</li>
+                </Link>
+                <Link to="/posts">
+                  <li>Postings</li>
+                </Link>
+                <Link to="/notifications">
+                  <li>Notifications</li>
+                </Link>
+              </ul>
+            </>
+          ) : (
+            <p>test</p>
           )}
         </nav>
       </div>
@@ -33,9 +43,9 @@ class Header extends Component {
   }
 }
 const mapStateToProps = state => {
-  const {user} = state.reducer
-  console.log(state)
-  return {user}
+  const { user } = state.reducer;
+  console.log(state);
+  return { user };
 };
 
 export default connect(mapStateToProps)(Header);

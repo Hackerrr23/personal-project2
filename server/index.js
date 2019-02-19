@@ -4,7 +4,10 @@ const app = express();
 const { json } = require("body-parser");
 const massive = require("massive");
 const { register, login } = require("./controller/auth");
-const { getNotifications} = require("./controller/notifications");
+const {
+  getNotifications,
+  personCommenting
+} = require("./controller/notifications");
 const { createComment, getComments } = require("./controller/comments");
 const { getUsers, userProfile, filteredUsers } = require("./controller/users");
 const { createPost, getPosts } = require("./controller/posts");
@@ -59,6 +62,8 @@ app.get("/api/posts", getPosts);
 app.get("/api/comments", getComments);
 app.post("/api/createComment", createComment);
 
-app.get("/api/notifications/:id",getNotifications)
+//notifications
+app.get("/api/notifications/:id", getNotifications);
+app.get("/api/personCommenting/:id", personCommenting);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

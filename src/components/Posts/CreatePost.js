@@ -42,24 +42,38 @@ class CreatePost extends Component {
     event.preventDefault();
     const { user } = this.props;
     const { title, type, post } = this.state;
+    axios
+      .post("/api/createPost", { title, type, post, user: user.id })
+      .then(res => {
+        this.setState({
+          posts: [...this.state.posts, res.data]
+        });
+      });
   };
   handleSubmit2 = event => {
     event.preventDefault();
-    const { comment, addComment,poster } = this.state;
-    const {user} = this.props
+    const { comment, addComment, poster } = this.state;
+    const { user } = this.props;
     console.log(this.state.poster);
-    axios.post("/api/createComment", { comment,personCommenting: user.id,poster, id: addComment }).then(res => {
-      this.setState({
-        addComment: false,
-        comments: res.data
+    axios
+      .post("/api/createComment", {
+        comment,
+        personCommenting: user.id,
+        poster,
+        id: addComment
+      })
+      .then(res => {
+        this.setState({
+          addComment: false,
+          comments: res.data
+        });
       });
-    });
   };
 
   render() {
     const { type, post, title, comment } = this.state;
     const { user } = this.props;
-    console.log(user.id)
+    console.log(user.id);
 
     const showPosts = this.state.posts.map((post, i) => {
       return (
