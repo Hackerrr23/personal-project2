@@ -40,7 +40,7 @@ class Notifications extends Component {
     const { user } = this.props;
     console.log(user);
     const commentersInfo = this.state.commentersInfo.map(commenter => {
-      // console.log(commenter.id)
+      console.log(commenter.id)
       const { comment } = this.state.notifications[0];
       return (
         <div key={commenter.id}>

@@ -23,6 +23,8 @@ export const updateUsername = username => {
   };
 };
 export const updateEmail = email => {
+  console.log("email hit")
+  console.log(email)
   return {
     type: UPDATE_EMAIL,
     payload: email
@@ -30,6 +32,7 @@ export const updateEmail = email => {
 };
 
 export const updatePassword = password => {
+  console.log(password)
   return {
     type: UPDATE_PASSWORD,
     payload: password

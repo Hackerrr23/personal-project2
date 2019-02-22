@@ -44,7 +44,7 @@ class Header extends Component {
 }
 const mapStateToProps = state => {
   const { user } = state.reducer;
-  console.log(state);
+  // console.log(state);
   return { user };
 };
 
