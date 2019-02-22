@@ -32,5 +32,19 @@ module.exports = {
         res.status(500).send({ errorMessage: "Something went wrong" });
         console.log(err);
       });
+  },
+  addImage: (req, res) => {
+    const db = req.app.get("db");
+    console.log(req.body);
+    db.add_image([req.body.image,req.body.id])
+      .then(response => {
+        console.log(response);
+        res.status(200).json(response);
+      })
+
+      .catch(err => {
+        res.status(500).send({ errorMessage: "Something went wrong" });
+        console.log(err);
+      });
   }
 };

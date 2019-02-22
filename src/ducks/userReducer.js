@@ -45,6 +45,7 @@ export const register = (username, password, email) => {
 };
 
 export const login = (username, password) => {
+  console.log("user hit")
   return {
     type: LOGIN,
     payload: axios.post("/api/signin", { username, password })

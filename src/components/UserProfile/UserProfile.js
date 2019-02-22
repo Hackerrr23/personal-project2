@@ -7,14 +7,15 @@ class UserProfile extends Component {
     super(props);
     this.state = {
       user: [],
-      preff: []
+      preff: [],
+      email: ""
     };
   }
   componentDidMount() {
     console.log(this.props.match.params.id);
     axios.get(`/api/users/${this.props.match.params.id}`).then(res => {
       console.log(this.props);
-      console.log(res.data);
+      // console.log(res.data);
       this.setState({
         user: res.data
       });
@@ -23,13 +24,35 @@ class UserProfile extends Component {
     axios.get(`/api/current/${user.id}`).then(res => {
       this.setState({ preff: res.data });
     });
+    axios.get("/api/posts").then(res => {
+      // console.log(res.data);
+      this.setState({
+        posts: res.data
+      });
+    });
   }
 
-  showTextArea = () => {
-    //display text area
+  sendEmail = () => {
+    const { email } = this.state;
+    // console.log(this.props)  
+    const {user} = this.props
+    axios.post("/api/email", {
+      email,
+      emailSender: user.id,
+      emailReceiver: this.props.match.params.id
+    });
+  };
+  handleChange = e => {
+    // console.log(e.target.value)
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
   render() {
-    console.log(this.props);
+    console.log(this.props.match.params.id);
+    const { email } = this.state;
+    // console.log(this.props);
+    // console.log(this.props.match.params.id)
     const usersList = this.state.user.map(item => {
       // console.log(this.props);
       const { user } = this.props;
@@ -59,22 +82,23 @@ class UserProfile extends Component {
         </div>
       );
     });
-    console.log(this.state);
-    console.log("sdfosdf");
+
     return (
       <div>
         sdfposdfodsfo
         {usersList}
         {currentInfo}
         <textarea
-          name="contact"
+          name="email"
+          value={email}
           id="conctact-me"
           cols="30"
           rows="20"
           placeholder="Contact Me if Intereste"
+          onChange={this.handleChange}
         />
         <p>
-          <button onClick={this.showTextArea}>Contact Me</button>
+          <button onClick={this.sendEmail}>Contact Me</button>
         </p>
         {/* {this.state.user.pets} */}
       </div>

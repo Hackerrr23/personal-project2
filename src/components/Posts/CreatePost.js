@@ -14,28 +14,31 @@ class CreatePost extends Component {
       comments: [],
       posts: [],
       addComment: false,
-      poster: ""
+      poster: "",
+      users: [],
+      file: null
     };
   }
   componentDidMount() {
     axios.get("/api/posts").then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.setState({
         posts: res.data
       });
     });
     axios.get("/api/comments").then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.setState({
         comments: res.data
       });
     });
+ 
   }
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
   handleChange2 = event => {
-    console.log(this.state);
+    // console.log(this.state);
     this.setState({ [event.target.name]: event.target.value });
   };
   handleSubmit = event => {
@@ -50,11 +53,15 @@ class CreatePost extends Component {
         });
       });
   };
+//   Access Key ID:
+// AKIAJRQDB2EJMK3P3UBQ
+// Secret Access Key:
+// 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
   handleSubmit2 = event => {
     event.preventDefault();
     const { comment, addComment, poster } = this.state;
     const { user } = this.props;
-    console.log(this.state.poster);
+    // console.log(this.state.poster);
     axios
       .post("/api/createComment", {
         comment,
@@ -69,18 +76,36 @@ class CreatePost extends Component {
         });
       });
   };
+  submitFile = (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append('file', this.state.file[0]);
+    axios.post(`/test-upload`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then(response => {
+      // handle your response;
+    }).catch(error => {
+      // handle your error
+    });
+  }
+
+  handleFileUpload = (event) => {
+    this.setState({file: event.target.files});
+  }
 
   render() {
     const { type, post, title, comment } = this.state;
     const { user } = this.props;
-    console.log(user.id);
-
+    
     const showPosts = this.state.posts.map((post, i) => {
+      // console.log(post.user_id);
       return (
         <div key={post.id}>
-          <h1>{post.username}</h1>
+        <Link to={`/users/${post.user_id}`}><h1>{post.username}</h1></Link>
           <h2>
-            <Link to={`/users/${user.id}`}>{post.title}</Link> ---{post.type}
+            {post.title} ---{post.type}
           </h2>
           <h3>{post.post}</h3>
           <div className="jumbotron-div col s12">
@@ -98,7 +123,8 @@ class CreatePost extends Component {
                 }
               })}
             </ul>
-          </div>
+           </div> 
+
           {this.state.addComment === post.id ? (
             <div>
               <input
@@ -119,7 +145,7 @@ class CreatePost extends Component {
               Add a comment
             </button>
           )}
-        </div>
+        </div> 
       );
     });
     return (
@@ -156,7 +182,8 @@ class CreatePost extends Component {
         <button onClick={this.handleSubmit}>Post</button>
         {showPosts}
       </div>
-    );
+    );//show post ends
+
   }
 }
 const mapStateToProps = state => {

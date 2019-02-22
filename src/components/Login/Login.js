@@ -16,7 +16,7 @@ export class Login extends Component {
       this.props.login(username, password, email);
       // console.log(user)
     };
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <form>
         <h5>Sign In</h5>
@@ -42,7 +42,7 @@ export class Login extends Component {
           onChange={e => this.props.updateEmail(e.target.value)}
         />
 
-        <Link to="/home">
+        <Link to="/mypref">
           <button onClick={() => addAndClear()}>Confirm and Complete</button>
         </Link>
       </form>
