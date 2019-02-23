@@ -53,10 +53,7 @@ class CreatePost extends Component {
         });
       });
   };
-//   Access Key ID:
-// AKIAJRQDB2EJMK3P3UBQ
-// Secret Access Key:
-// 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
+
   handleSubmit2 = event => {
     event.preventDefault();
     const { comment, addComment, poster } = this.state;
@@ -100,7 +97,7 @@ class CreatePost extends Component {
     const { user } = this.props;
     
     const showPosts = this.state.posts.map((post, i) => {
-      // console.log(post.user_id);
+      console.log(post.user_id);
       return (
         <div key={post.id}>
         <Link to={`/users/${post.user_id}`}><h1>{post.username}</h1></Link>
