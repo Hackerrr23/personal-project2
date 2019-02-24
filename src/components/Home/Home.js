@@ -38,18 +38,19 @@ class Home extends Component {
   render() {
     const { gender, type, pets } = this.state;
     const usersList = this.state.users.map((user, id) => {
+      console.log(user.profile_pic)
       return (
         <div key={user.id}>
           <Link to={`/users/${user.id}`}>
             <h1>{user.username}</h1>
           </Link>
           <h3>{user.username}</h3>
+          <img src={user.profile_pic} alt=""/>
           <h3>{user.gender}</h3>
         </div>
       );
     });
-    console.log(this.state);
-    console.log("sdfosdf");
+
     return (
       <div>
         Hey whats up how you doing

@@ -1,2 +1,2 @@
-select u.id,username,gender,profession from users u join 
+select u.id,username,profile_pic,gender,profession from users u join 
 preferences p on u.id = p.user_id;
