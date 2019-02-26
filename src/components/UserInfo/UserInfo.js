@@ -35,7 +35,7 @@ class UserInfo extends Component {
 
   render() {
     // const {user} = this.props
-    // console.log(this.props.user);
+    console.log(this.props.user);
     const { rooms, gender, smoke, pets, profession, bio } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
@@ -57,7 +57,7 @@ class UserInfo extends Component {
           </select>
         </label>
 
-        <label>
+        {/* <label>
           Do You Smoke:
           <input
             name="smoke"
@@ -65,7 +65,7 @@ class UserInfo extends Component {
             onChange={this.handleChange}
             type="text"
           />
-        </label>
+        </label> */}
 
         <label>
           Have Any Pets?..

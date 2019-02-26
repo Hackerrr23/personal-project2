@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./Notifications.css"
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 class Notifications extends Component {
@@ -7,7 +8,7 @@ class Notifications extends Component {
     super(props);
     this.state = {
       notifications: [],
-      personCommenting: 0,
+      personCommenting: "",
       commentersInfo: []
     };
   }
@@ -16,29 +17,27 @@ class Notifications extends Component {
     axios
       .get(`/api/notifications/${user.id}`)
       .then(res => {
+        if(res.data[0].personcommenting){
         this.setState({
           notifications: res.data,
           personCommenting: res.data[0].personcommenting,
           commentersUsername: ""
-        });
-        console.log(res.data);
-        console.log(res.data[0].personcommenting);
-        console.log(this.state);
-        console.log(this.state.personCommenting);
+        })};
       })
       .then(res => {
         const { personCommenting } = this.state;
+        console.log(this.state.personCommenting)
         axios.get(`/api/personCommenting/${personCommenting}`).then(res => {
           console.log(res.data);
           this.setState({
             commentersInfo: res.data
           });
-        });
+        })
       });
   }
   render() {
     const { user } = this.props;
-    console.log(user);
+    console.log(this.props);
     const commentersInfo = this.state.commentersInfo.map(commenter => {
       console.log(commenter.id)
       const { comment } = this.state.notifications[0];

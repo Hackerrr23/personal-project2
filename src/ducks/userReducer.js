@@ -23,7 +23,7 @@ export const updateUsername = username => {
   };
 };
 export const updateEmail = email => {
-  console.log("email hit")
+  // console.log("email hit")
   console.log(email)
   return {
     type: UPDATE_EMAIL,
@@ -32,7 +32,7 @@ export const updateEmail = email => {
 };
 
 export const updatePassword = password => {
-  console.log(password)
+  // console.log(password)
   return {
     type: UPDATE_PASSWORD,
     payload: password
@@ -40,7 +40,7 @@ export const updatePassword = password => {
 };
 
 export const register = (username, password, email) => {
-  console.log(username, password, email)
+  // console.log(username, password, email)
   return {
     type: REGISTER,
     payload: axios.post("/api/signup", { username, password, email })
@@ -48,22 +48,22 @@ export const register = (username, password, email) => {
 };
 
 export const login = (username, password) => {
-  console.log("user hit")
+  // console.log("user hit")
   return {
     type: LOGIN,
     payload: axios.post("/api/signin", { username, password })
   };
 };
 export const insertPref = (rooms,gender,smoke,pets,profession,bio,user_id) => {
-  console.log("insert pref hit")
+  // console.log("insert pref hit")
   return {
     type: INSERT_PREF,
     payload: axios.post("/api/pref", { rooms,gender,smoke,pets,profession,bio,user_id})
   };
 }
 export const deletePref = id => {
-  console.log("delete pref hit")
-  console.log(id);
+  // console.log("delete pref hit")
+  // console.log(id);
   return {
     type: DELETE_PREF,
     payload: axios.delete(`/api/deletePref/${id}`)
@@ -102,7 +102,7 @@ export default function reducer(state = initialState, action) {
         user: action.payload.data
       };
     case `${LOGIN}_FULFILLED`:
-      console.log(action.payload); // anyway of checking?
+      // console.log(action.payload); // anyway of checking?
       return {
         ...state,
         user: action.payload.data

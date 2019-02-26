@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./Home.css"
+
 import { Link } from "react-router-dom";
 class Home extends Component {
   constructor(props) {
@@ -40,13 +42,16 @@ class Home extends Component {
     const usersList = this.state.users.map((user, id) => {
       console.log(user.profile_pic)
       return (
-        <div key={user.id}>
+       <div className="home1">
+        <div className="home2" key={user.id}>
+          <div className="users">
+          <img className="pics" src={user.profile_pic} alt=""/>
           <Link to={`/users/${user.id}`}>
             <h1>{user.username}</h1>
           </Link>
-          <h3>{user.username}</h3>
-          <img src={user.profile_pic} alt=""/>
           <h3>{user.gender}</h3>
+          </div>
+        </div>
         </div>
       );
     });

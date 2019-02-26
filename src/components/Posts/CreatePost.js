@@ -48,6 +48,7 @@ class CreatePost extends Component {
     axios
       .post("/api/createPost", { title, type, post, user: user.id })
       .then(res => {
+        console.log(res.data)
         this.setState({
           posts: [...this.state.posts, res.data]
         });

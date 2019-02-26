@@ -18,34 +18,22 @@ export class Login extends Component {
     };
     // console.log(this.props);
     return (
-      <form>
-        <h5>Sign In</h5>
-
-        <label htmlFor="neme">UserName</label>
-        <input
-          type="text"
+      <div class="form-style-6">
+          <h1>Sign In</h1>
+          <form>
+          <input type="text" name="field1" placeholder="User Name"
           value={this.props.username}
           onChange={e => this.props.updateUsername(e.target.value)}
-        />
-
-        <label htmlFor="place">Password</label>
-        <input
-          type="text"
+           />
+          <input type="text" name="field1" placeholder="Password"
           value={this.props.password}
           onChange={e => this.props.updatePassword(e.target.value)}
-        />
-
-        <label htmlFor="email">Email</label>
-        <input
-          type="text"
-          value={this.props.email}
-          onChange={e => this.props.updateEmail(e.target.value)}
-        />
-
-        <Link to="/mypref">
-          <button onClick={() => addAndClear()}>Confirm and Complete</button>
+           />
+          <Link to="/mypref">
+          <input type="submit" onClick={() => addAndClear()} value="Login" />
         </Link>
-      </form>
+          </form>
+      </div>
     );
   }
 }
