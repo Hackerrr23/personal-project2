@@ -38,7 +38,7 @@ class CurrentUser extends Component {
     const {user} = this.props
     axios.put(`/api/editPreference/`, {rooms,gender,smoke,pets,profession,bio,id: user.id}).then(res => {
       console.log(res);
-      this.setState({ pref: res.data, edit: false })
+      this.setState({ pref: res.data, addOrEdit: false })
     });
   }
   addPreference = () => {
@@ -98,7 +98,6 @@ class CurrentUser extends Component {
             <option value="Four Rooms">Four Bedroom</option>
           </select>
         </label>
-
         <label>
           Your Gender:
           <select value={gender} name="gender" onChange={this.handleChange}>
@@ -106,7 +105,6 @@ class CurrentUser extends Component {
             <option value="Female">Female</option>
           </select>
         </label>
-
         <label>
           Do You Smoke:
           <input
@@ -116,7 +114,6 @@ class CurrentUser extends Component {
             type="text"
           />
         </label>
-
         <label>
           Have Any Pets?..
           <select value={pets} name="pets" onChange={this.handleChange}>
@@ -147,11 +144,7 @@ class CurrentUser extends Component {
           cols="30"
           rows="10"
         />
-        {this.state.pref.length !== 0?(
         <button onClick={this.editPreference}>Edit</button>
-
-        ): (<button onClick={this.addPreference}>Add</button>)
-        }
         </div>
       ): null}
         
@@ -172,9 +165,7 @@ const mapStateToProps = state => {
   const { user, pref } = state.reducer;
   return { user, pref };
 };
-
 export default connect(mapStateToProps)(CurrentUser);
-
 // import React, { Component } from "react";
 // import { connect } from "react-redux";
 // import { getUser } from "../../ducks/userReducer";
