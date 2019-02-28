@@ -12,7 +12,7 @@ export class Login extends Component {
   render() {
     const addAndClear = () => {
       const { username, password, email } = this.props;
-      console.log(username, password, email);
+      // console.log(username, password, email);
       this.props.login(username, password, email);
       // console.log(user)
     };

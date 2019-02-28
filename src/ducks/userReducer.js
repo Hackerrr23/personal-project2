@@ -24,7 +24,7 @@ export const updateUsername = username => {
 };
 export const updateEmail = email => {
   // console.log("email hit")
-  console.log(email)
+  // console.log(email)
   return {
     type: UPDATE_EMAIL,
     payload: email
@@ -81,7 +81,7 @@ export const deletePref = id => {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_USERNAME:
-    console.log(action.payload)
+    // console.log(action.payload)
       return {
         ...state,
         username: action.payload

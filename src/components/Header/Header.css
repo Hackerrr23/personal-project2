@@ -1,6 +1,48 @@
+.header {
+  /* background: grey; */
+}
 nav {
-    display: flex;
-    background: rgb(70,187,241);
-    color: red;
-    justify-content: space-between;
+  display: flex;
+  /* background: rgb(70, 187, 241); */
+  background: url("http://media-s3-us-east-1.ceros.com/apartment-therapy/images/2018/03/21/6d71cf6ffb2e7482b0a5aba2b2cc193a/0009-detroit.png");
+  color: red;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.top {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+.top li {
+  margin-right: 40px;
+  text-decoration-style: none;
+  letter-spacing: 2px;
+  border-right: 1px solid grey;
+  padding-right: 5px;
+  /* color: white; */
+}
+.top li:hover {
+  color: lightcoral;
+}
+section i {
+  font-size: 300%;
+  color: lightcoral;
+  animation-duration: 3s;
+}
+#notifications {
+  color: lightcoral;
+  font-size: 200%;
+  border-right: 0px solid grey;
+  padding-right: 0;
+}
+#notifications i {
+  color: red;
+}
+a:visited {
+  color: none;
 }

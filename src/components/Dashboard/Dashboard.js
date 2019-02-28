@@ -6,7 +6,7 @@ export class Dashboard extends Component {
   render() {
     return (
       <div className="dash-bod">
-        <img className="dash-pic" src="https://www.rentcafe.com/blog/wp-content/uploads/2018/09/roommates-apps-featured.jpg" />
+        <img className="dash-pic" src="https://images.unsplash.com/photo-1547211453-719b1bdec5f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" />
   
        <div className="main">
           <h1>Life's Too Short To Not Have A Coolmate</h1>

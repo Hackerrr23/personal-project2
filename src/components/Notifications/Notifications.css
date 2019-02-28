@@ -1,0 +1,22 @@
+.commenters {
+  justify-content: space-around;
+}
+.comment {
+  border: 1px solid grey;
+  border-radius: 7px;
+  background: lightgoldenrodyellow;
+  padding: 20;
+  /* margin-right:90vw;
+    margin-left:90vw; */
+  width: 90% auto;
+}
+.notifications {
+  display: flex;
+  margin-right: 15vw;
+  margin-left: 15vw;
+  justify-content: space-around;
+  margin-top: 10vh;
+}
+.suggestions {
+  background: blue;
+}

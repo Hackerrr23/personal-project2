@@ -7,7 +7,7 @@ const { register, login } = require("./controller/auth");
 const { sendEmailNotification } = require("./controller/email");
 const {
   getNotifications,
-  personCommenting
+  peopleAndComments
 } = require("./controller/notifications");
 const { createComment, getComments } = require("./controller/comments");
 const { getUsers, userProfile, filteredUsers,addImage } = require("./controller/users");
@@ -115,7 +115,7 @@ app.post("/api/createComment", createComment);
 
 //notifications
 app.get("/api/notifications/:id", getNotifications);
-app.get("/api/personCommenting/:id", personCommenting);
+app.get("/api/peopleAndCommentes/:id", peopleAndComments);
 
 //email notification
 app.post("/api/email", sendEmailNotification);

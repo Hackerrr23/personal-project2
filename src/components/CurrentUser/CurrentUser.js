@@ -19,8 +19,8 @@ class CurrentUser extends Component {
   componentDidMount() {
     const { user } = this.props;
     axios.get(`/api/current/${user.id}`).then(res => {
-      console.log(user);
-      console.log(res.data);
+      // console.log(user);
+      // console.log(res.data);
       this.setState({ pref: res.data });
     });
   }
@@ -37,7 +37,7 @@ class CurrentUser extends Component {
     const {rooms,gender,smoke,pets,profession,bio} = this.state
     const {user} = this.props
     axios.put(`/api/editPreference/`, {rooms,gender,smoke,pets,profession,bio,id: user.id}).then(res => {
-      console.log(res);
+      // console.log(res);
       this.setState({ pref: res.data, addOrEdit: false })
     });
   }
@@ -45,7 +45,7 @@ class CurrentUser extends Component {
     const {rooms,gender,smoke,pets,profession,bio} = this.state
     const {user} = this.props
     axios.post(`/api/addPreference/`, {rooms,gender,smoke,pets,profession,bio,id: user.id}).then(res => {
-      console.log(res);
+      // console.log(res);
     });
   }
   handleChange = event => {
@@ -68,11 +68,12 @@ class CurrentUser extends Component {
     const currentInfo = this.state.pref.map(preference => {
       const {rooms,gender,smoke,pets,profession,bio} = this.state
       return (
-        <div>
+        <div key={preference.id}>
 
        
         <div key={preference.id}>
           <h1>These are your roomate preferences...</h1>
+    
           <h3>{preference.rooms}</h3>
           <h3>{preference.gender}</h3>
           <h3>{preference.smoke}</h3>
@@ -166,32 +167,3 @@ const mapStateToProps = state => {
   return { user, pref };
 };
 export default connect(mapStateToProps)(CurrentUser);
-// import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import { getUser } from "../../ducks/userReducer";
-// class CurrentUser extends Component {
-//   componentDidMount() {
-//     this.props.getUser();
-//   }
-//   render() {
-//     // const { user } = this.props;
-//     console.log(this.props)
-//     return (
-//       {/* <div>
-//         <h1>{user.gender}</h1>
-//         <h1>{user.profession}</h1>
-//         <h1>{user.smoke}</h1>
-//         <h1>{user.pets}</h1>
-//         <h1>{user.bio}</h1>
-//       </div> */}
-//     );
-//   }
-// }
-// const mapStateToProps = state => {
-//   // const { user } = state.userReducer;
-//   // return { user };
-// };
-// export default connect(
-//   mapStateToProps
-//   // { getUser }
-// )(CurrentUser);

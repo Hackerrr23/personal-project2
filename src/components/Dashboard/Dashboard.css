@@ -10,11 +10,28 @@
     /* width: 60vw; */
     position:absolute;
     transform: translate(-50%,-50%);
-    top: 40%;
-    left: 50%;
-    
+    top: 30%;
+    left: 35%;
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 5px 10px #888888;
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    65%  { transform: translate(0, 15px); }
+    to   { transform: translate(0, -0px); }    
+}
+.main h1 {
+    color: lightcoral;
 }
 .dash-pic {
-    opacity: .4;
+    /* opacity: .4; */
     width: 100vw;
+    height:85vh;
+   
 }

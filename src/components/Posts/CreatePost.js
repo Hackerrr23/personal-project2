@@ -48,7 +48,7 @@ class CreatePost extends Component {
     axios
       .post("/api/createPost", { title, type, post, user: user.id })
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         this.setState({
           posts: [...this.state.posts, res.data]
         });
@@ -98,7 +98,7 @@ class CreatePost extends Component {
     const { user } = this.props;
     
     const showPosts = this.state.posts.map((post, i) => {
-      console.log(post.user_id);
+      // console.log(post.user_id);
       return (
         <div key={post.id}>
         <Link to={`/users/${post.user_id}`}><h1>{post.username}</h1></Link>

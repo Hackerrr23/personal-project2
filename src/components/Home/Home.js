@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./Home.css"
+import "./Home.css";
 
 import { Link } from "react-router-dom";
 class Home extends Component {
@@ -16,7 +16,7 @@ class Home extends Component {
 
   componentDidMount() {
     axios.get("/api/users").then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       this.setState({
         users: res.data
       });
@@ -31,7 +31,7 @@ class Home extends Component {
   handleClick = () => {
     const { gender, type, pets } = this.state;
     axios.get(`/api/filtered?gender=${gender}&pets=${pets}`).then(res => {
-      console.log(res);
+      // console.log(res);
       this.setState({
         users: res.data
       });
@@ -40,63 +40,58 @@ class Home extends Component {
   render() {
     const { gender, type, pets } = this.state;
     const usersList = this.state.users.map((user, id) => {
-      console.log(user.profile_pic)
+      // console.log(user.profile_pic);
       return (
-       <div className="home1">
-        <div className="home2" key={user.id}>
-          <div className="users">
-          <img className="pics" src={user.profile_pic} alt=""/>
-          <Link to={`/users/${user.id}`}>
-            <h1>{user.username}</h1>
-          </Link>
-          {user.gender === "Male" || user.gender === "male" ? (
-            <div>
-            <h5>{user.gender}</h5>
-            <i class="fas fa-male"></i>
+        <div key={user.id} className="home1">
+          <div className="home2" key={user.id}>
+            <div className="users">
+              <img className="pics" src={user.profile_pic} alt="" />
+              <Link to={`/users/${user.id}`}>
+                <h1>{user.username}</h1>
+              </Link>
+              {user.gender === "Male" || user.gender === "male" ? (
+                <div>
+                  <h5>{user.gender}</h5>
+                  <i class="fas fa-male" />
+                </div>
+              ) : (
+                <div>
+                  <h5>{user.gender}</h5>
+                  <i class="fas fa-female" />
+                </div>
+              )}
+              <h3>{user.profession}</h3>
             </div>
-          ) : (
-            <div>
-            <h5>{user.gender}</h5>
-            <i class="fas fa-female"></i>
-            </div>
-          )}
-          <h3>{user.profession}</h3>
           </div>
-        </div>
         </div>
       );
     });
 
     return (
       <div>
-        Hey whats up how you doing
-        <label>
-          Your Gender:
-          <select value={gender} name="gender" onChange={this.handleChange}>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-        </label>
-        {/* <label>
-          Your Rooming Sitution:
-          <select value={type} name="type" onChange={this.handleChange}>
-            <option value="Need A Room">Need A Room</option>
-            <option value="Have A Room">Have A Room</option>
-          </select>
-        </label> */}
-        <label>
-          Have Any Pets?..
-          <select value={pets} name="pets" onChange={this.handleChange}>
-            <option value="Cats">Cat</option>
-            <option value="Elephant">Elephant</option>
-            <option value="Dog">Dog</option>
-            <option value="Turtle">Turtle</option>
-            <option value="More Cats">More Cats</option>
-            <option value="">Rabbit</option>
-          </select>
-        </label>
-        <button onClick={this.handleClick}>Filter</button>
-        {usersList}
+        <div className="filter">
+          <h4>Filter Your Search</h4>
+          <label>
+            <span>I want to room with a </span>
+            <select value={gender} name="gender" onChange={this.handleChange}>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option> 
+            </select>  
+          </label>
+          <label>
+            who has a..
+            <select value={pets} name="pets" onChange={this.handleChange}>
+              <option value="Cats">Cat</option>
+              <option value="Elephant">Elephant</option>
+              <option value="Dog">Dog</option>
+              <option value="Turtle">Turtle</option>
+              <option value="More Cats">More Cats</option>
+              <option value="">Rabbit</option>
+            </select>
+          </label>
+          <button onClick={this.handleClick}>Filter</button>
+        </div>
+        <div>{usersList}</div>
       </div>
     );
   }

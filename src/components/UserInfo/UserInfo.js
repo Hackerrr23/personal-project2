@@ -35,7 +35,7 @@ class UserInfo extends Component {
 
   render() {
     // const {user} = this.props
-    console.log(this.props.user);
+    // console.log(this.props.user);
     const { rooms, gender, smoke, pets, profession, bio } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>

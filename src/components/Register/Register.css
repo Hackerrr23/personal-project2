@@ -58,6 +58,9 @@
 	padding: 3%;
 	border: 1px solid #43D1AF;
 }
+a:link {
+	text-decoration: none;
+  }
 
 .form-style-6 input[type="submit"],
 .form-style-6 input[type="button"]{

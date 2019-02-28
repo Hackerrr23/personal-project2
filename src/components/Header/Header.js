@@ -5,21 +5,21 @@ import { connect } from "react-redux";
 
 class Header extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
 
     return (
-      <div>
+      <div className="header">
         <nav>
           <section>
-            <i className="fas fa-house-damage" />
+          <span><i class="fab fa-fort-awesome animated bounce"></i></span>
             <Link to="/">
               <h1>ROOMIES</h1>
-            </Link>
             <span>Find Your Perfect Roomate</span>
+            </Link>
           </section>
           {this.props.user.username ? (
             <>
-              <ul>
+              <ul className="top">
                 <Link to="/home">
                   <li>See Others</li>
                 </Link>
@@ -30,13 +30,13 @@ class Header extends Component {
                   <li>Postings</li>
                 </Link>
                 <Link to="/notifications">
-                  <li>Notifications</li>
+                  <li id="notifications">Notifications<span><i class="far fa-bell"></i></span></li>
                 </Link>
               </ul>
             </>
-          ) : (
-            <p>test</p>
-          )}
+           ) : (
+            <p>test</p> 
+          ) }
         </nav>
       </div>
     );
