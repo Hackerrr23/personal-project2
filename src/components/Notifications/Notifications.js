@@ -45,7 +45,7 @@ class Notifications extends Component {
                 <img className="pics" src={commenters.profile_pic} />
                   {/* <span>commented on your post...</span> */}
                 </h2>
-                <div>
+                <div className="comments">
                   <h2>{commenters.comment}</h2>
                 </div>
               </div>
@@ -55,7 +55,12 @@ class Notifications extends Component {
         }
       });
     });
-    return <div>{displayNotifications}</div>;
+    if(!this.state.usersPosts[0]){
+      return <div>
+        <h1>No Notifications yet. Make a post and get interactive </h1>
+      </div>
+    }
+    return <div className="notifications">{displayNotifications}</div>;
   }
 }
 const maptStateToprops = state => {

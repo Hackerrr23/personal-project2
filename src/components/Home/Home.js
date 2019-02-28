@@ -49,6 +49,8 @@ class Home extends Component {
               <Link to={`/users/${user.id}`}>
                 <h1>{user.username}</h1>
               </Link>
+              <h3>{user.profession}</h3>
+
               {user.gender === "Male" || user.gender === "male" ? (
                 <div>
                   <h5>{user.gender}</h5>
@@ -60,7 +62,6 @@ class Home extends Component {
                   <i class="fas fa-female" />
                 </div>
               )}
-              <h3>{user.profession}</h3>
             </div>
           </div>
         </div>

@@ -29,7 +29,7 @@ export class Login extends Component {
           value={this.props.password}
           onChange={e => this.props.updatePassword(e.target.value)}
            />
-          <Link to="/mypref">
+          <Link to="/home">
           <input type="submit" onClick={() => addAndClear()} value="Login" />
         </Link>
           </form>

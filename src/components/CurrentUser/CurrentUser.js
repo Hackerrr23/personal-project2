@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./CurrentUser.css"
 import { connect } from "react-redux";
 class CurrentUser extends Component {
   constructor(props) {
@@ -72,7 +73,20 @@ class CurrentUser extends Component {
 
        
         <div key={preference.id}>
-          <h1>These are your roomate preferences...</h1>
+        <h2>Round Card</h2>
+
+<div className="card">
+  <img src={this.props.user.profile_pic} alt="Avatar"  />
+  <div className="container">
+          <h3>{preference.rooms}</h3>
+          <h3>{preference.gender}</h3>
+          <h3>{preference.smoke}</h3>
+          <h3>{preference.pets}</h3>
+          <h3>{preference.profession}</h3>
+          <h3>{preference.bio}</h3>
+  </div>
+</div>
+          {/* <h1>These are your roomate preferences...</h1>
     
           <h3>{preference.rooms}</h3>
           <h3>{preference.gender}</h3>
@@ -86,7 +100,7 @@ class CurrentUser extends Component {
           </button>
           <button onClick={() => this.setState({addOrEdit: true})}>
             Update Your Preferences
-          </button>
+          </button> */}
         </div>
       {this.state.addOrEdit ?(
         <div>
