@@ -96,6 +96,7 @@ app.get("/api/users", getUsers);
 app.get("/api/users/:id", userProfile);
 app.get("/api/me", me);
 app.post("/api/register",register)
+
 //filtered users
 app.get("/api/filtered", filteredUsers);
 

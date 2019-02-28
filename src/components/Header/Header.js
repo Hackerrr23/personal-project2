@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios"
 import "./Header.css";
 import { connect } from "react-redux";
 
 class Header extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      profile:""
+    }
+  }
+  // componentDidMount() {
+  //   const { user } = this.props;
+  //   axios.get(`/api/profile_pic/${user.id}`).then(res => {;
+  //     console.log(res.data)
+  //     this.setState({ profile: res.data });
+  //   });
+  // }
   render() {
     // console.log(this.props);
-
     return (
       <div className="header">
         <nav>
@@ -32,6 +45,7 @@ class Header extends Component {
                 <Link to="/notifications">
                   <li id="notifications">Notifications<span><i class="far fa-bell"></i></span></li>
                 </Link>
+                <img src = {this.props.user.profile_pic} />
               </ul>
             </>
            ) : (

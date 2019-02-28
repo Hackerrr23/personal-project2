@@ -29,6 +29,11 @@ nav {
 .top li:hover {
   color: lightcoral;
 }
+.top img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 section i {
   font-size: 300%;
   color: lightcoral;

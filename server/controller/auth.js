@@ -18,6 +18,7 @@ module.exports = {
       const user = newUser[0];
       req.session.user = {
         email: user.email,
+        profile:user.profile_pic,
         id: user.id,
         username: user.username
       };
@@ -42,6 +43,7 @@ module.exports = {
       }
       req.session.user = {
         email: user.email,
+        profile_pic:user.profile_pic,
         id: user.id,
         username: user.username
       }
