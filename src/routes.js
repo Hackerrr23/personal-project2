@@ -10,6 +10,7 @@ import CurrentUser from "./components/CurrentUser/CurrentUser";
 import UserInfo from "./components/UserInfo/UserInfo";
 import Posts from "./components/Posts/CreatePost";
 import Notifications from "./components/Notifications/Notifications";
+import Flip from "./components/Flip/Flip";
 
 export default (
   <Switch>
@@ -22,5 +23,6 @@ export default (
     <Route path="/current" component={CurrentUser} />
     <Route path="/posts" component={Posts} />
     <Route path="/notifications" component={Notifications} />
+    <Route path="/flip" component={Flip} />
   </Switch>
 );
