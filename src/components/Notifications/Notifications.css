@@ -1,21 +1,56 @@
-/* .notifications {
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+.containing-carousel {
+  /* margin-top: 40vh; */
+  /* width:100%; */
+  
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  /* display: flex; */
+  border: 2px solid green;
+  
+  /* flex-direction: row; */
+  /* justify-content: space-between; */
+
+}
+.newer {
+  border: 1px solid cyan;
   display: flex;
-  flex-wrap: wrap;
-} */
+  justify-content: center;
+}
+.notifications {
+  /* height: 80vh; */
+  width: 60vw;
+  border: 1px solid yellow;
+  /* display: flex; */
+  margin: 0 auto;
+}
 .commenters {
-  justify-content: space-around;
+  display: flex;
+  border: 1px solid blue;
+  max-width: 20vw;
+  margin: 20px;
+  /* justify-content: space-between; */
+  margin-top: 50px;
 }
-
-
-.suggestions {
-  background: blue;
+.comment_stuff {
+  /* margin-left: 25vw; */
+  margin-bottom: 100px;
+  max-width: 25vw;
+  
 }
-.comments {
-  /* background: lightsalmon; */
-  background: url("http://www.e-prophetic.com/wp-content/uploads/2014/10/Comments.jpg");
-  background-size: cover;
-  width: 30%;
-  border-radius: 7px;
-  opacity: 0.7;
-  color: green;
+.commenters img {
+  /* object-fit: contain; */
+  width: 200px;
+  height: 200px;
+  /* display: inline; */
+}
+.slick-arrow {
+  color: red;
+  /* background: blue; */
+  /* padding: 20px; */
+  /* z-index: 4; */
+}
+.slick-arrow::before {
+  color: blue;
 }

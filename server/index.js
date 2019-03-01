@@ -17,7 +17,8 @@ const {
   me,
   currentUserPref,
   deletePreference,
-  updatePreference
+  updatePreference,
+  commentersPreferences
 } = require("./controller/preferences");
 const session = require("express-session");
 const port = 4000;
@@ -105,6 +106,9 @@ app.post("/api/pref", preferences);
 app.get("/api/current/:id", currentUserPref);
 app.delete("/api/deletePref/:id", deletePreference);
 app.put("/api/editPreference/", updatePreference);
+
+//person commenting's perferences
+app.get("/api/commentersPreferences", commentersPreferences)
 
 //posts
 app.post("/api/createPost", createPost);

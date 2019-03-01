@@ -1,4 +1,4 @@
-.flip-card {
+/* .flip-card {
     background-color: transparent;
     width: 300px;
     height: 300px;
@@ -25,12 +25,12 @@
     height: 100%;
     backface-visibility: hidden;
   }
-  
+  /*
   .flip-card-front {
-    /* background-color: #bbb; */
-    color: black;
+     background-color: #bbb; 
+     color: black;
     z-index: 2;
-  }
+  } 
   
   .flip-card-back {
     background-color: #2980b9;
@@ -40,5 +40,6 @@
   }
   .flip-card-front img {
     /* width: 300px;
-    height: 300px; */
-  }
+    height: 300px; 
+  } 
+  */
