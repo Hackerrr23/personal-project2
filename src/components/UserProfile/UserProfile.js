@@ -22,6 +22,7 @@ class UserProfile extends Component {
       });
     });
     const { user } = this.props;
+    console.log(user)
     axios.get(`/api/current/${user.id}`).then(res => {
       this.setState({ preff: res.data });
     });

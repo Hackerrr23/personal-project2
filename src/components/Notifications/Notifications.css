@@ -7,43 +7,63 @@
   margin: 0 auto;
   /* border: 1px solid red; */
   /* display: flex; */
-  border: 2px solid green;
+  /* border: 2px solid green; */
   
   /* flex-direction: row; */
   /* justify-content: space-between; */
 
 }
 .newer {
-  border: 1px solid cyan;
+  /* border: 1px solid cyan; */
   display: flex;
   justify-content: center;
+  
 }
 .notifications {
   /* height: 80vh; */
   width: 60vw;
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   /* display: flex; */
   margin: 0 auto;
 }
 .commenters {
   display: flex;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   max-width: 20vw;
-  margin: 20px;
+  /* margin: 20px; */
   /* justify-content: space-between; */
   margin-top: 50px;
+  border-right: 2px solid lightblue;
+  margin-right: 10vw;
+  padding-right: 2vw;
 }
 .comment_stuff {
   /* margin-left: 25vw; */
-  margin-bottom: 100px;
-  max-width: 25vw;
+  /* margin-bottom: 100px; */
+  /* max-width: 25vw; */
   
 }
 .commenters img {
   /* object-fit: contain; */
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   /* display: inline; */
+}
+.info {
+  display: flex;
+  /* flex-direction: column; */
+  padding: 0;
+}
+.info i {
+  margin-top:5vh;
+  font-size: 200%;
+}
+.fa-female {
+  color: blue;
+}
+.fa-male {
+  color: lightcoral;
 }
 .slick-arrow {
   color: red;

@@ -120,7 +120,7 @@ app.post("/api/createComment", createComment);
 
 //notifications
 app.get("/api/notifications/:id", getNotifications);
-app.get("/api/peopleAndCommentes/:id", peopleAndComments);
+app.get("/api/peopleAndComments/:id", peopleAndComments);
 
 //email notification
 app.post("/api/email", sendEmailNotification);

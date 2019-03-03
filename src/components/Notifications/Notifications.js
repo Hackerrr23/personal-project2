@@ -20,13 +20,14 @@ class Notifications extends Component {
     const { user } = this.props;
 
     axios.get(`/api/notifications/${user.id}`).then(res => {
-      // console.log(res.data);
-      if (res.data[0]) {
-        //  check if the user has any posts
+      console.log(res.data);// we get this back
+      console.log(user)
+      if (res.data[0]) { //  check if the user has any posts
+        
         this.setState({ usersPosts: res.data });
-        // console.log(this.state.usersPosts)
-
-        axios.get(`/api/peopleAndCommentes/${this.props.user.id}`).then(res => {
+        console.log(this.state.usersPosts)
+          console.log(this.props.user.id)
+        axios.get(`/api/peopleAndComments/${this.props.user.id}`).then(res => {
           //join statement of users and comments where ownerofpost = user.id
           console.log(res.data);
           if (res.data[0]) {
@@ -36,27 +37,75 @@ class Notifications extends Component {
       }
     });
     axios.get("/api/commentersPreferences").then(response => {
-      console.log(response.data)
-      this.setState({commentersPref: response.data})
-    })
+      console.log(response.data);
+      this.setState({ commentersPref: response.data });
+    });
   }
 
   render() {
     const settings = {
       dots: true,
       infinite: true,
-      speed: 500,
+      speed: 4000,
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: true,
+      // autoplay: true
     };
+    // let displayNotifications = this.state.usersPosts.map(post => {
+
+    //   return this.state.peopleAndComments.map(commenters => {
+    //     console.log(commenters);
+    //     if (post.user_id == commenters.ownerofpost) {
+    //       return this.state.commentersPref.map(pref => {
+    //         if (pref.user_id === commenters.personcommenting) {
+    //           return (
+    //             <div className="containing-carousel">
+    //               <div className="newer">
+    //                 <div className="commenters">
+    //                   <img src={commenters.profile_pic} />
+    //                   <div className="info">
+    //                     <h5>
+    //                       <Link to={`/users/${commenters.personcommenting}`}>
+    //                         Contact
+    //                       </Link>{" "}
+    //                       {commenters.username}
+    //                     </h5>
+    //                     <br />
+    //                     {/* <h2>{pref.gender}</h2> */}
+    //                     {pref.gender === 'male' || pref.gender ==="Male" ? (
+    //                       <>
+    //                         <i class="fas fa-male" />
+    //                       </>
+    //                     ) : (
+    //                       <i class="fas fa-female" />
+    //                     )}
+    //                   </div>
+    //                   {/* <img src={commenters.profile_pic} /> */}
+    //                 </div>
+
+    //                 <div className="comment_stuff">
+    //                   <h4>{commenters.comment}</h4>
+    //                   <h4>{commenters.smoke}</h4>
+    //                   <div>
+    //                     <p>{pref.bio}</p>
+    //                   </div>
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           );
+    //         }
+    //       });
+    //     }
+    //   });
+    // });
     const displayNotifications = this.state.usersPosts.map(post => {
       return this.state.peopleAndComments.map(commenters => {
         console.log(commenters)
-        if (post.id === commenters.ownerofpost) {
+        if (post.user_id == commenters.ownerofpost) {
           return (
             this.state.commentersPref.map(pref => {
-              if(pref.user_id === commenters.personcommenting){
+              if(pref.user_id == commenters.personcommenting){
                return (
                  <div className="containing-carousel">
                    <div className="newer">
@@ -89,12 +138,13 @@ class Notifications extends Component {
       return (
         <div>
           <h1>No Notifications yet. Make a post and get interactive </h1>
+          {/* <i class="fas fa-female"></i> */}
         </div>
       );
     }
     return (
       <div className="notifications">
-        <h2> Single Item</h2>
+        <h2> Your Notifications</h2>
         <Slider {...settings}>{displayNotifications}</Slider>
       </div>
     );

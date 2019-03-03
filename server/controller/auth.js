@@ -47,7 +47,7 @@ module.exports = {
         id: user.id,
         username: user.username
       }
-      // console.log(req.session)
+      console.log(req.session)
       res.status(200).json(req.session.user);
 
     } catch(err) {

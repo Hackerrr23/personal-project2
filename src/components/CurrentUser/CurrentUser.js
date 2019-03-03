@@ -20,8 +20,8 @@ class CurrentUser extends Component {
   componentDidMount() {
     const { user } = this.props;
     axios.get(`/api/current/${user.id}`).then(res => {
-      // console.log(user);
-      // console.log(res.data);
+      console.log(user);
+      console.log(res.data);
       this.setState({ pref: res.data });
     });
   }
@@ -84,16 +84,15 @@ class CurrentUser extends Component {
           <h3>{preference.pets}</h3>
           <h3>{preference.profession}</h3>
           <h3>{preference.bio}</h3>
+          <button onClick={this.deletePreference}>
+            Delete Your Preferences
+          </button>
+          <button onClick={() => this.setState({addOrEdit: true})}>
+            Update Your Preferences
+          </button>
   </div>
 </div>
-          {/* <h1>These are your roomate preferences...</h1>
-    
-          <h3>{preference.rooms}</h3>
-          <h3>{preference.gender}</h3>
-          <h3>{preference.smoke}</h3>
-          <h3>{preference.pets}</h3>
-          <h3>{preference.profession}</h3>
-          <h3>{preference.bio}</h3>
+          {/* <h1>These are your roomate preferences...</h1
 
           <button onClick={this.deletePreference}>
             Delete Your Preferences

@@ -42,11 +42,11 @@ class Home extends Component {
     const usersList = this.state.users.map((user, id) => {
       // console.log(user.profile_pic);
       return (
-        <div className="card2">
+        <div key={user.id} className="card2">
           <div className="container2">
           <img src={user.profile_pic} alt="Avatar"/>
            <div className="new">
-            <h4><b>{user.username}</b></h4> 
+           <Link to={`/users/${user.id}`}><h4><b>{user.username}</b></h4></Link>
             <p>{user.profession}</p> 
           </div>
           </div>
@@ -100,7 +100,7 @@ class Home extends Component {
           </label>
           <button onClick={this.handleClick}>Filter</button>
         </div>
-        <div className="bigger">{usersList}</div>
+        <div  className="bigger">{usersList}</div>
       </div>
     );
   }

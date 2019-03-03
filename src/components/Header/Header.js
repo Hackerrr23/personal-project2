@@ -11,15 +11,15 @@ class Header extends Component {
       profile:""
     }
   }
-  // componentDidMount() {
-  //   const { user } = this.props;
-  //   axios.get(`/api/profile_pic/${user.id}`).then(res => {;
-  //     console.log(res.data)
-  //     this.setState({ profile: res.data });
-  //   });
-  // }
+  componentDidMount() {
+    const { user } = this.props;
+    axios.get(`/api/profile_pic/${user.id}`).then(res => {;
+      console.log(res.data)
+      this.setState({ profile: res.data });
+    });
+  }
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     return (
       <div className="header">
         <nav>
