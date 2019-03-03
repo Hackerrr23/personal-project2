@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import "./CreatePost.css";
 import { Link } from "react-router-dom";
 import { createPost } from "../../ducks/postReducer";
 class CreatePost extends Component {
@@ -27,12 +28,11 @@ class CreatePost extends Component {
       });
     });
     axios.get("/api/comments").then(res => {
-      // console.log(res.data);
+      console.log(res.data);
       this.setState({
         comments: res.data
       });
     });
- 
   }
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -74,54 +74,60 @@ class CreatePost extends Component {
         });
       });
   };
-  submitFile = (event) => {
+  submitFile = event => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append('file', this.state.file[0]);
-    axios.post(`/test-upload`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }).then(response => {
-      // handle your response;
-    }).catch(error => {
-      // handle your error
-    });
-  }
+    formData.append("file", this.state.file[0]);
+    axios
+      .post(`/test-upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        // handle your response;
+      })
+      .catch(error => {
+        // handle your error
+      });
+  };
 
-  handleFileUpload = (event) => {
-    this.setState({file: event.target.files});
-  }
+  handleFileUpload = event => {
+    this.setState({ file: event.target.files });
+  };
 
   render() {
     const { type, post, title, comment } = this.state;
     const { user } = this.props;
-    
+
     const showPosts = this.state.posts.map((post, i) => {
       // console.log(post.user_id);
       return (
-        <div key={post.id}>
-        <Link to={`/users/${post.user_id}`}><h1>{post.username}</h1></Link>
-          <h2>
-            {post.title} ---{post.type}
-          </h2>
-          <h3>{post.post}</h3>
+        <div className="containing_posts" key={post.id}>
+          <div className="posts">
+          <div className="posters">
+            <img src={post.profile_pic} />
+            <Link to={`/users/${post.user_id}`}>
+              <h3>
+                {post.title} ---{post.type}
+              </h3>
+            </Link>
+          </div>
+          <h4>{post.post}</h4>
           <div className="jumbotron-div col s12">
             <ul className="collection">
               {this.state.comments.map(comment => {
                 if (post.id === comment.post_id) {
                   return (
-                    <h5
-                      key={comment.id}
-                      className="collection-item left-align purple lighten-2"
-                    >
+                    <div className="comments">
+                      <img src = {comment.profile_pic} />
                       <p>{comment.comment}</p>
-                    </h5>
+                    </div>
                   );
                 }
               })}
             </ul>
-           </div> 
+          </div>
 
           {this.state.addComment === post.id ? (
             <div>
@@ -143,7 +149,8 @@ class CreatePost extends Component {
               Add a comment
             </button>
           )}
-        </div> 
+        </div>
+        </div>
       );
     });
     return (
@@ -180,8 +187,7 @@ class CreatePost extends Component {
         <button onClick={this.handleSubmit}>Post</button>
         {showPosts}
       </div>
-    );//show post ends
-
+    ); //show post ends
   }
 }
 const mapStateToProps = state => {

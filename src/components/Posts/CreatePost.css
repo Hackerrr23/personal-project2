@@ -1,0 +1,33 @@
+.containing_posts {
+    width: 50vw;
+    margin: 0 auto;
+}
+.posts {
+    margin: 2vh;
+    /* border: 1px solid grey; */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+}
+.posters,.comments {
+    display: flex;
+    justify-content: center;
+}
+.posters img,.comments img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 2vh;
+
+}
+.comments {
+    border-bottom: 1px solid grey;
+}
+.comments img {
+    width: 60px;
+    height: 60px;
+}
+.collection {
+    background: blue;
+    width: 20vw;
+    margin-left: 12vw;
+}

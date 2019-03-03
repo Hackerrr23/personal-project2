@@ -1,1 +1,1 @@
-select * from post join comments on post.id = comments.post_id;
+select * from users join comments on users.id = comments.personcommenting;
