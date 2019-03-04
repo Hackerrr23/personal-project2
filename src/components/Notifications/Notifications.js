@@ -73,13 +73,13 @@ class Notifications extends Component {
     //                     </h5>
     //                     <br />
     //                     {/* <h2>{pref.gender}</h2> */}
-    //                     {pref.gender === 'male' || pref.gender ==="Male" ? (
-    //                       <>
-    //                         <i class="fas fa-male" />
-    //                       </>
-    //                     ) : (
-    //                       <i class="fas fa-female" />
-    //                     )}
+                        // {pref.gender === 'male' || pref.gender ==="Male" ? (
+                        //   <>
+                        //     <i class="fas fa-male" />
+                        //   </>
+                        // ) : (
+                        //   <i class="fas fa-female" />
+                        // )}
     //                   </div>
     //                   {/* <img src={commenters.profile_pic} /> */}
     //                 </div>

@@ -45,7 +45,14 @@ class Header extends Component {
                 <Link to="/notifications">
                   <li id="notifications">Notifications<span><i class="far fa-bell"></i></span></li>
                 </Link>
-                <img src = {this.props.user.profile_pic} />
+                {this.props.profile_pic.profile_pic ? (
+                          <>
+                            <img src={this.props.profile_pic.profile_pic} />
+                          </>
+                        ) : (
+                            <img src={this.props.user.profile_pic} />
+                          
+                        )}
               </ul>
             </>
            ) : (
@@ -57,9 +64,9 @@ class Header extends Component {
   }
 }
 const mapStateToProps = state => {
-  const { user } = state.reducer;
+  const { user,profile_pic } = state.reducer;
   // console.log(state);
-  return { user };
+  return { user,profile_pic };
 };
 
 export default connect(mapStateToProps)(Header);

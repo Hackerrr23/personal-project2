@@ -4,7 +4,7 @@ module.exports = {
   register: async (req, res) => {
     const db = req.app.get("db");
     const { username,email } = req.body;
-    console.log(req.body)
+    // console.log(req.body)
     const password = await bcrypt.hash(req.body.password, 12);
     try {
       const result = await db.login_user([username,password,email]);

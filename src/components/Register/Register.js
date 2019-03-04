@@ -7,7 +7,7 @@ import {
   register,
   updatePassword,
   updateUsername,
-  updateEmail
+  updateEmail,updateProfile
 } from "../../ducks/userReducer";
 
  class Register extends Component {
@@ -37,8 +37,14 @@ import {
     }).then(response => {
     
       
-      axios.post(`/api/image`, { image: response.data.Location});
+      axios.post(`/api/image`, { image: response.data.Location}).then(res => {
+        console.log(res.data)
+        // this.props.profile_pic =  response.data.Location
+        this.props.updateProfile(res.data)
+      });
+      // console.log(this.props.user)
       // console.log(response.data.Location)
+      // console.log(response.props.profile_pic)
     }).catch(error => {
        console.log(error)
     });
@@ -79,17 +85,18 @@ import {
   }
 }
 const maptStateToProps = state => {
-  const { username, password, email,user } = state.reducer;
+  const { username, password, email,user,profile_pic } = state.reducer;
   return {
     username,
     password,
     email,
+    profile_pic,
     user
   };
 };
 
 export default connect(
   maptStateToProps,
-  { register, updatePassword, updateUsername, updateEmail }
+  { register, updatePassword, updateUsername, updateEmail,updateProfile }
 )(Register);
 

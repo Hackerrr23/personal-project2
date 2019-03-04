@@ -53,7 +53,7 @@ class CurrentUser extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
   render() {
-    // console.log(this.props.user.id);
+    console.log(this.props);
     if(this.state.pref.length === 0){
       return (
         <div>
@@ -73,10 +73,10 @@ class CurrentUser extends Component {
 
        
         <div key={preference.id}>
-        <h2>Round Card</h2>
+        <h2>Your Information</h2>
 
 <div className="card">
-  <img src={this.props.user.profile_pic} alt="Avatar"  />
+  <img src={this.props.profile_pic.profile_pic} alt="Avatar"  />
   <div className="container">
           <h3>{preference.rooms}</h3>
           <h3>{preference.gender}</h3>
@@ -176,7 +176,7 @@ class CurrentUser extends Component {
   }
 }
 const mapStateToProps = state => {
-  const { user, pref } = state.reducer;
-  return { user, pref };
+  const { user, profile_pic } = state.reducer;
+  return { user, profile_pic };
 };
 export default connect(mapStateToProps)(CurrentUser);

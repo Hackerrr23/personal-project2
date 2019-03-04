@@ -8,9 +8,13 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
 }
+.post {
+border-bottom: 1px solid lightgray;
+}
 .posters,.comments {
     display: flex;
     justify-content: center;
+    /* flex-direction: column; */
 }
 .posters img,.comments img {
     width: 80px;
@@ -27,7 +31,20 @@
     height: 60px;
 }
 .collection {
-    background: blue;
+    background: lightblue;
+    border-radius: 17px;
     width: 20vw;
     margin-left: 12vw;
+}
+.btn-comments {
+    padding: 10px;
+    border-radius: 20px;
+    background: lightgreen;
+    color: white;
+    font-size: 165%;
+    margin-bottom: 1vh;
+}
+.btn-comments:hover {
+    background: green;
+    
 }

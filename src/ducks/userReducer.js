@@ -5,17 +5,27 @@ const initialState = {
   email: "",
   user: {},
   pref:[],
-  loggedIn: false
+  loggedIn: false,
+  profile_pic: {}
 };
 const UPDATE_USERNAME = "UPDATE_USERNAME";
 const UPDATE_PASSWORD = "UPDATE_PASSWORD";
 const UPDATE_EMAIL = "UPDATE_EMAIL";
 const REGISTER = "REGISTER";
 const LOGIN = "LOGIN";
+const PROFILE_PIC= "PROFILE_PIC"
 // const CURRENT_PREF = "CURRENT_PREF";
 const INSERT_PREF = "INSERT_PREF";
 const DELETE_PREF = "DELETE_PREF"
 
+
+export const updateProfile = profile => {
+  console.log(profile)
+  return {
+    type: PROFILE_PIC,
+    payload: profile
+  };
+}
 export const updateUsername = username => {
   return {
     type: UPDATE_USERNAME,
@@ -80,6 +90,12 @@ export const deletePref = id => {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case PROFILE_PIC:
+    console.log(action.payload)
+      return {
+        ...state,
+        profile_pic: action.payload
+      };
     case UPDATE_USERNAME:
     // console.log(action.payload)
       return {

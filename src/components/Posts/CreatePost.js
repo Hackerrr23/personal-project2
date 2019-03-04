@@ -108,13 +108,14 @@ class CreatePost extends Component {
           <div className="posters">
             <img src={post.profile_pic} />
             <Link to={`/users/${post.user_id}`}>
-              <h3>
+              <h4>
                 {post.title} ---{post.type}
-              </h3>
+              </h4>
             </Link>
           </div>
-          <h4>{post.post}</h4>
+          <h3 className = "post">{post.post}</h3>
           <div className="jumbotron-div col s12">
+            <h3>Comments...</h3>
             <ul className="collection">
               {this.state.comments.map(comment => {
                 if (post.id === comment.post_id) {
@@ -141,7 +142,7 @@ class CreatePost extends Component {
               <button onClick={this.handleSubmit2}>Post Comment</button>
             </div>
           ) : (
-            <button
+            <button className="btn-comments" id="up"
               onClick={() =>
                 this.setState({ addComment: post.id, poster: post.user_id })
               }

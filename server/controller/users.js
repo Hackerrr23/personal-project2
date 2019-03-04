@@ -36,12 +36,17 @@ module.exports = {
   },
   addImage: (req, res) => {
     const db = req.app.get("db");
-    console.log(req.body,req.params.id);
+    console.log(req.body);
     console.log(req.session)
     db.add_image([req.body.image,req.session.user.id])
       .then(response => {
         console.log(response);
-        res.status(200).json(response);
+        req.session.user = {
+        
+          profile_pic:req.body.image
+         
+        };
+        res.status(200).json(req.session.user);
       })
 
       .catch(err => {
