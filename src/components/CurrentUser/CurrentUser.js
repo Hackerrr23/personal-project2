@@ -76,7 +76,7 @@ class CurrentUser extends Component {
         <h2>Your Information</h2>
 
 <div className="card">
-  <img src={this.props.profile_pic.profile_pic} alt="Avatar"  />
+  <img src={this.props.user.profile_pic} alt="Avatar"  />
   <div className="container">
           <h3>{preference.rooms}</h3>
           <h3>{preference.gender}</h3>
