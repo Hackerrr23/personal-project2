@@ -19,20 +19,29 @@ export class Login extends Component {
     // console.log(this.props);
     return (
       <div class="form-style-6">
-          <h1>Sign In</h1>
-          <form>
-          <input type="text" name="field1" placeholder="User Name"
-          value={this.props.username}
-          onChange={e => this.props.updateUsername(e.target.value)}
-           />
-          <input type="text" name="field1" placeholder="Password"
-          value={this.props.password}
-          onChange={e => this.props.updatePassword(e.target.value)}
-           />
+        <form>
+          <div className="h1">
+            <h1>Sign In</h1>
+          </div>
+          <i class="fas fa-lock" />
+          <input
+            type="text"
+            name="field1"
+            placeholder="User Name"
+            value={this.props.username}
+            onChange={e => this.props.updateUsername(e.target.value)}
+          />
+          <input
+            type="text"
+            name="field1"
+            placeholder="Password"
+            value={this.props.password}
+            onChange={e => this.props.updatePassword(e.target.value)}
+          />
           <Link to="/home">
-          <input type="submit" onClick={() => addAndClear()} value="Login" />
-        </Link>
-          </form>
+            <input type="submit" onClick={() => addAndClear()} value="Login" />
+          </Link>
+        </form>
       </div>
     );
   }

@@ -1,44 +1,73 @@
-.header {
-  /* background: grey; */
-}
 nav {
   display: flex;
-  /* background: rgb(70, 187, 241); */
-  background: url("http://media-s3-us-east-1.ceros.com/apartment-therapy/images/2018/03/21/6d71cf6ffb2e7482b0a5aba2b2cc193a/0009-detroit.png");
-  color: red;
-  justify-content: space-around;
-  width: 100%;
-  margin: 0;
-  border: 0;
-  background-repeat: no-repeat;
-  background-size: cover;
+  justify-content: space-evenly;
+  width: 80vw;
+  margin: 0 auto;
 }
-.top {
+.top2 {
   display: flex;
-  justify-content: space-between;
+  width: 40vw;
+  justify-content: space-around;
   list-style-type: none;
-}
-.top li {
-  margin-right: 40px;
-  text-decoration-style: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   letter-spacing: 2px;
-  border-right: 1px solid grey;
-  padding-right: 5px;
-  /* color: white; */
+  font-size: 120%;
 }
-.top li:hover {
-  color: lightcoral;
-}
-.top img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+
+.top li {
+  color: lightcoral;  
+  letter-spacing: 2px;
+  border-right: 3px solid lightblue;
+
 }
 section i {
   font-size: 300%;
   color: lightcoral;
   animation-duration: 3s;
 }
+.top li:hover {
+  color: lightcoral;
+}
+
+/* .header {
+  display: flex;
+  justify-content: center;
+}
+nav {
+  display: flex;
+
+  color: red;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0 auto;
+  border: 0;
+  background-repeat: no-repeat;
+  background: red;
+} */
+/* nav section {
+  background: yellow;
+} */
+/* .top2 {
+  display: flex;
+  justify-content: space-between;
+  text-decoration-style: none;
+  background: blue;
+
+} */
+/* .top li {
+
+  letter-spacing: 2px;
+  border-right: 1px solid grey;
+  padding-right: 5px;
+} */
+
+.top img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+/*
+
 #notifications {
   color: lightcoral;
   font-size: 200%;
@@ -50,4 +79,4 @@ section i {
 }
 a:visited {
   color: none;
-}
+} */

@@ -31,8 +31,8 @@ class Header extends Component {
             </Link>
           </section>
           {this.props.user.username ? (
-            <>
-              <ul className="top">
+            <div className="top">
+              <ul className="top2">
                 <Link to="/home">
                   <li>See Others</li>
                 </Link>
@@ -54,9 +54,9 @@ class Header extends Component {
                           
                         )}
               </ul>
-            </>
+            </div>
            ) : (
-            <p>test</p> 
+            <></>
           ) }
         </nav>
       </div>
