@@ -7,6 +7,11 @@
   /* background: lightslategrey; */
   /* height: 0vh; */
 }
+#passy {
+  padding: 3vh;
+  margin-top: 0vh;
+  margin-bottom: 1vh;
+}
 .form-style-6 form {
   border-radius: 7px;
   display: flex;

@@ -79,7 +79,7 @@ class Home extends Component {
     return (
       <div>
         <div className="filter">
-          <h4>Filter Your Search</h4>
+          <h4>Filter Potential Roomates</h4>
           <label>
             <span>I want to room with a </span>
             <select value={gender} name="gender" onChange={this.handleChange}>

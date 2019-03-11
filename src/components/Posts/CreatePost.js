@@ -105,87 +105,92 @@ class CreatePost extends Component {
       return (
         <div className="containing_posts" key={post.id}>
           <div className="posts">
-          <div className="posters">
-            <img src={post.profile_pic} />
-            <Link to={`/users/${post.user_id}`}>
-              <h4>
-                {post.title} ---{post.type}
-              </h4>
-            </Link>
-          </div>
-          <h3 className = "post">{post.post}</h3>
-          <div className="jumbotron-div col s12">
-            <h3>Comments...</h3>
-            <ul className="collection">
-              {this.state.comments.map(comment => {
-                if (post.id === comment.post_id) {
-                  return (
-                    <div className="comments">
-                      <img src = {comment.profile_pic} />
-                      <p>{comment.comment}</p>
-                    </div>
-                  );
-                }
-              })}
-            </ul>
-          </div>
-
-          {this.state.addComment === post.id ? (
-            <div>
-              <input
-                type="text"
-                value={comment}
-                onChange={this.handleChange2}
-                name="comment"
-                placeholder="comment here"
-              />
-              <button onClick={this.handleSubmit2}>Post Comment</button>
+            <div className="posters">
+              <img src={post.profile_pic} />
+              <Link to={`/users/${post.user_id}`}>
+                <h4>
+                  {post.title} ---{post.type}
+                </h4>
+              </Link>
             </div>
-          ) : (
-            <button className="btn-comments" id="up"
-              onClick={() =>
-                this.setState({ addComment: post.id, poster: post.user_id })
-              }
-            >
-              Add a comment
-            </button>
-          )}
-        </div>
+            <h3 className="post">{post.post}</h3>
+            <div className="jumbotron-div col s12">
+              <h3>Comments...</h3>
+              <ul className="collection">
+                {this.state.comments.map(comment => {
+                  if (post.id === comment.post_id) {
+                    return (
+                      <div className="comments">
+                        <img src={comment.profile_pic} />
+                        <p>{comment.comment}</p>
+                      </div>
+                    );
+                  }
+                })}
+              </ul>
+            </div>
+
+            {this.state.addComment === post.id ? (
+              <div>
+                <input
+                  type="text"
+                  value={comment}
+                  onChange={this.handleChange2}
+                  name="comment"
+                  placeholder="comment here"
+                />
+                <button onClick={this.handleSubmit2}>Post Comment</button>
+              </div>
+            ) : (
+              <button
+                className="btn-comments"
+                id="up"
+                onClick={() =>
+                  this.setState({ addComment: post.id, poster: post.user_id })
+                }
+              >
+                Add a comment
+              </button>
+            )}
+          </div>
         </div>
       );
     });
     return (
-      <div>
-        <h1>Create A Post Here To Find Potential Roomates Nearby</h1>
-
-        <label>
-          Title of Post:
-          <input
-            placeholder="Post Title"
-            name="title"
+      <div className="create_post">
+        <div className="post_creating">
+          <h4 id="first-h1">Create A Post Here To Find Potential Roomates Nearby</h4>
+          <div className="title">
+            <label>
+               Post:
+              <input
+                placeholder="Post Title"
+                name="title"
+                onChange={this.handleChange}
+                value={title}
+                type="text"
+              />
+            </label>
+            <label>
+              Your Rooming Sitution:
+              <select value={type} name="type" onChange={this.handleChange}>
+                <option value="Need A Room">Need A Room</option>
+                <option value="Have A Room">Have A Room</option>
+              </select>
+            </label>
+          </div>
+              <h4></h4>
+          <textarea
+            placeholder="What Are You Looking For"
             onChange={this.handleChange}
-            value={title}
-            type="text"
+            value={post}
+            name="post"
+            id=""
+            
           />
-        </label>
-        <label>
-          Your Rooming Sitution:
-          <select value={type} name="type" onChange={this.handleChange}>
-            <option value="Need A Room">Need A Room</option>
-            <option value="Have A Room">Have A Room</option>
-          </select>
-        </label>
-
-        <textarea
-          placeholder="What Are You Looking For"
-          onChange={this.handleChange}
-          value={post}
-          name="post"
-          id=""
-          cols="20"
-          rows="10"
-        />
-        <button onClick={this.handleSubmit}>Post</button>
+          <button onClick={this.handleSubmit}>Post</button>
+          <hr/>
+        </div>
         {showPosts}
       </div>
     ); //show post ends

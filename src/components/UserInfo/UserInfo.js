@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { insertPref } from "../../ducks/userReducer";
 import { Link } from "react-router-dom";
+import "./UserInfo.css"
 class UserInfo extends Component {
   constructor(props) {
     super(props);
@@ -97,7 +98,7 @@ class UserInfo extends Component {
           cols="30"
           rows="10"
         />
-        <Link to="/current">
+        <Link to="/posts">
           <button onClick={this.handleSubmit}>Submit</button>
         </Link>
       </form>

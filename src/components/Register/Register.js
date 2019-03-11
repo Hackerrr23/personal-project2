@@ -76,7 +76,8 @@ class Register extends Component {
             onChange={e => this.props.updateUsername(e.target.value)}
           />
           <input
-            type="text"
+            id="passy"
+            type="password"
             name="field1"
             placeholder="Password"
             value={password}
@@ -98,8 +99,12 @@ class Register extends Component {
             />
           </h2>
 
-          <Link to="/home">
-            <input type="submit" onClick={() => this.addAndClear()} value="Login" />
+          <Link to="/mypref">
+            <input
+              type="submit"
+              onClick={() => this.addAndClear()}
+              value="Login"
+            />
           </Link>
         </form>
       </div>

@@ -6,10 +6,15 @@
     margin-left: 30vw;
     margin-right: 25vw;
   }
+  .card_current {
+    display: flex;
+    justify-content: center
+  }
   .card img {
     object-fit: cover;
-      width: 199px;
-      height: 200px;
+      width: 129px;
+      height: 129px;
+      border-radius: 50%;
   }
   .card:hover {
     box-shadow: 0 1px 16px 0 rgba(0,0,0,0.2);
@@ -18,8 +23,29 @@
   img {
     border-radius: 5px 5px 0 0;
   }
+  .container h3 span {
+    color: #ffcdd2;
+    weight: bold;
+  }
   
   .container {
     padding: 2px 16px;
    
+  }
+  .container h3 {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
+  #pref-buttons {
+    display: flex;
+    width: 30vw;
+    margin: 0 auto;
+    justify-content: space-around;
+  }
+  #pref-buttons button  {
+       width: 5vw;
+    margin: 0 auto;
+    padding: 1vh;
+    border-radius: 5px;
+    margin-top: 1vh;
   }

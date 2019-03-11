@@ -1,50 +1,96 @@
 .containing_posts {
-    width: 50vw;
-    margin: 0 auto;
+  width: 50vw;
+  margin: 0 auto;
 }
 .posts {
-    margin: 2vh;
-    /* border: 1px solid grey; */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-
+  margin: 2vh;
+  /* border: 1px solid grey; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .post {
-border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
 }
-.posters,.comments {
-    display: flex;
-    justify-content: center;
-    /* flex-direction: column; */
+.posters,
+.comments {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
 }
-.posters img,.comments img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 2vh;
-
+.posters img,
+.comments img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 2vh;
 }
 .comments {
-    border-bottom: 1px solid grey;
+  border-bottom: 1px solid grey;
 }
 .comments img {
-    width: 60px;
-    height: 60px;
+  width: 60px;
+  height: 60px;
 }
 .collection {
-    background: lightblue;
-    border-radius: 17px;
-    width: 20vw;
-    margin-left: 12vw;
+  background: lightblue;
+  border-radius: 17px;
+  width: 20vw;
+  margin-left: 12vw;
 }
 .btn-comments {
-    padding: 10px;
-    border-radius: 20px;
-    background: lightgreen;
-    color: white;
-    font-size: 165%;
-    margin-bottom: 1vh;
+  padding: 10px;
+  border-radius: 20px;
+  background: lightgreen;
+  color: white;
+  font-size: 165%;
+  margin-bottom: 1vh;
 }
 .btn-comments:hover {
-    background: green;
-    
+  background: green;
+}
+.create_post input {
+  padding: 2vh;
+  border-radius: 7px;
+}
+#first-h1 {
+  color: lightcoral;
+  border-top: 1px solid grey;
+}
+.create_post textarea {
+  width: 40vw;
+  margin: 0 auto;
+  height: 4vh;
+  box-shadow: 0 1px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.post_creating {
+    width: 50vw;
+    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+
+}
+.post_creating button {
+  width: 5vw;
+  margin: 0 auto;
+  padding: 1vh;
+  border-radius: 5px;
+  margin-top: 1vh;
+}
+.post_creating button:hover {
+  background: lightcoral;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  width: 35vw;
+  margin: 0 auto;
+}
+.title label {
+  font-weight: bold;
+  font-size: 120%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-right: 1vw;
+  color: goldenrod;
 }

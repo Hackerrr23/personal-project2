@@ -32,13 +32,14 @@ export class Login extends Component {
             onChange={e => this.props.updateUsername(e.target.value)}
           />
           <input
-            type="text"
+          id="passy"
+            type="password"
             name="field1"
             placeholder="Password"
             value={this.props.password}
             onChange={e => this.props.updatePassword(e.target.value)}
           />
-          <Link to="/home">
+          <Link to="/posts">
             <input type="submit" onClick={() => addAndClear()} value="Login" />
           </Link>
         </form>
