@@ -20,13 +20,14 @@ class Notifications extends Component {
     const { user } = this.props;
 
     axios.get(`/api/notifications/${user.id}`).then(res => {
-      console.log(res.data);// we get this back
-      console.log(user)
-      if (res.data[0]) { //  check if the user has any posts
-        
+      console.log(res.data); // we get this back
+      console.log(user);
+      if (res.data[0]) {
+        //  check if the user has any posts
+
         this.setState({ usersPosts: res.data });
-        console.log(this.state.usersPosts)
-          console.log(this.props.user.id)
+        console.log(this.state.usersPosts);
+        console.log(this.props.user.id);
         axios.get(`/api/peopleAndComments/${this.props.user.id}`).then(res => {
           //join statement of users and comments where ownerofpost = user.id
           console.log(res.data);
@@ -49,88 +50,51 @@ class Notifications extends Component {
       speed: 4000,
       slidesToShow: 1,
       slidesToScroll: 1,
-      arrows: true,
+      arrows: true
       // autoplay: true
     };
-    // let displayNotifications = this.state.usersPosts.map(post => {
 
-    //   return this.state.peopleAndComments.map(commenters => {
-    //     console.log(commenters);
-    //     if (post.user_id == commenters.ownerofpost) {
-    //       return this.state.commentersPref.map(pref => {
-    //         if (pref.user_id === commenters.personcommenting) {
-    //           return (
-    //             <div className="containing-carousel">
-    //               <div className="newer">
-    //                 <div className="commenters">
-    //                   <img src={commenters.profile_pic} />
-    //                   <div className="info">
-    //                     <h5>
-    //                       <Link to={`/users/${commenters.personcommenting}`}>
-    //                         Contact
-    //                       </Link>{" "}
-    //                       {commenters.username}
-    //                     </h5>
-    //                     <br />
-    //                     {/* <h2>{pref.gender}</h2> */}
-                        // {pref.gender === 'male' || pref.gender ==="Male" ? (
-                        //   <>
-                        //     <i class="fas fa-male" />
-                        //   </>
-                        // ) : (
-                        //   <i class="fas fa-female" />
-                        // )}
-    //                   </div>
-    //                   {/* <img src={commenters.profile_pic} /> */}
-    //                 </div>
-
-    //                 <div className="comment_stuff">
-    //                   <h4>{commenters.comment}</h4>
-    //                   <h4>{commenters.smoke}</h4>
-    //                   <div>
-    //                     <p>{pref.bio}</p>
-    //                   </div>
-    //                 </div>
-    //               </div>
-    //             </div>
-    //           );
-    //         }
-    //       });
-    //     }
-    //   });
-    // });
     const displayNotifications = this.state.usersPosts.map(post => {
       return this.state.peopleAndComments.map(commenters => {
-        console.log(commenters)
+        console.log(commenters);
         if (post.user_id == commenters.ownerofpost) {
-          return (
-            this.state.commentersPref.map(pref => {
-              if(pref.user_id == commenters.personcommenting){
-               return (
-                 <div className="containing-carousel">
-                   <div className="newer">
-                   <div className="commenters">
-                     <img src={commenters.profile_pic} />
-                     <h2><Link to={`/users/${commenters.personcommenting}`}>Contact</Link> {commenters.username}</h2><br></br>
-                     <h2>{pref.gender}</h2>
-                     {/* <img src={commenters.profile_pic} /> */}
-                   </div>
+          return this.state.commentersPref.map(pref => {
+            if (pref.user_id == commenters.personcommenting) {
+              return (
+                <div className="containing-carousel">
+                  <div className="newer">
+                    <div className="commenters">
+                      <img src={commenters.profile_pic} />
+                      <h2>
+                        <Link to={`/users/${commenters.personcommenting}`}>
+                          Contact
+                        </Link>{" "}
+                        {commenters.username}
+                      </h2>
+                      <br />
+                      {/* <h2>{pref.gender}</h2> */}
+                      {/* <img src={commenters.profile_pic} /> */}
+                    </div>
 
-                   <div className="comment_stuff">
-                     <h2>{commenters.email}</h2>
-                     <h2>{commenters.comment}</h2>
-                     <h2>{commenters.smoke}</h2>
-                     <h2>{pref.gender}</h2>
-                     <h2>{pref.bio}</h2>
-                   </div>
-                   </div>
-                   
-                 </div>
-               );
-              }
-            })
-          )
-        
+                    <div className="comment_stuff">
+                      {/* <h2>{commenters.email}</h2> */}
+                      <div>
+                        <h2>{pref.profession}</h2>
+                      </div>
+                      <div className="lines" />
+                      <div>
+                        <h4>{pref.gender}</h4>
+                      </div>
+                      <div className="lines" />
+                      <div className="the_comment">
+                        <p>{commenters.comment}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+          });
         }
       });
     });

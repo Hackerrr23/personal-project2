@@ -22,7 +22,7 @@ class UserProfile extends Component {
       });
     });
     const { user } = this.props;
-    console.log(user)
+    console.log(user);
     axios.get(`/api/current/${user.id}`).then(res => {
       this.setState({ preff: res.data });
     });
@@ -91,20 +91,9 @@ class UserProfile extends Component {
     return (
       <div className="compare">
         <div className="profiles">
-          <div className="profile1">{usersList}</div>
+          <div className="profile1 ">{usersList}</div>
           <div className="profile2">{currentInfo}</div>
         </div>
-
-        {/* <textarea
-              name="email"
-              value={email}
-              id="conctact-me"
-              cols="30"
-              rows="20"
-              placeholder="Contact Me if Intereste"
-              onChange={this.handleChange}
-            /> */}
-
         <div>
           <div class="form-style-3">
             <form>

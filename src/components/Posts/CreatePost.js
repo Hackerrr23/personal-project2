@@ -34,6 +34,22 @@ class CreatePost extends Component {
       });
     });
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.comments.length !== prevState.comments.length) {
+      //   this.setState({
+
+      //     posts: this.state.posts
+      //   });
+      console.log("hit test");
+      axios.get("/api/comments").then(res => {
+        console.log(res.data);
+        this.setState({
+          comments: res.data
+        });
+      });
+    }
+  }
+
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -159,10 +175,12 @@ class CreatePost extends Component {
     return (
       <div className="create_post">
         <div className="post_creating">
-          <h4 id="first-h1">Create A Post Here To Find Potential Roomates Nearby</h4>
+          <h4 id="first-h1">
+            Create A Post Here To Find Potential Roomates Nearby
+          </h4>
           <div className="title">
             <label>
-               Post:
+              Post:
               <input
                 placeholder="Post Title"
                 name="title"
@@ -179,17 +197,16 @@ class CreatePost extends Component {
               </select>
             </label>
           </div>
-              <h4></h4>
+          <h4 />
           <textarea
             placeholder="What Are You Looking For"
             onChange={this.handleChange}
             value={post}
             name="post"
             id=""
-            
           />
           <button onClick={this.handleSubmit}>Post</button>
-          <hr/>
+          <hr />
         </div>
         {showPosts}
       </div>
