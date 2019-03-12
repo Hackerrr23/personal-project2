@@ -21,8 +21,8 @@
   width: 60vw;
   margin: 0 auto;
   /* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTguS2cwj4SY2kFoghiOMfx9l4cvTcO8HbI5mrsSonCRG4c6yzS"); */
-  background-repeat: no-repeat;
-  opacity: 0;
+  /* background-repeat: no-repeat; */
+  /* opacity: 0; */
   background-size: cover;
   background-position: center;
   font-family: "Playfair Display", serif;
@@ -77,8 +77,11 @@
   color: blue;
 }
 .lines {
-  height: 2vh;
+  height: 3vh;
   width: 1px;
   background: red;
   align-self: center;
+}
+.the_comment {
+  border: 1px solid grey;
 }

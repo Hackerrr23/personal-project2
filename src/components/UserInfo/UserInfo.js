@@ -24,7 +24,7 @@ class UserInfo extends Component {
   // };
 
   handleSubmit = event => {
-    event.preventDefault();
+    // event.preventDefault();
     const { user } = this.props;
 
     const { rooms, gender, smoke, pets, profession, bio } = this.state;
@@ -99,8 +99,8 @@ class UserInfo extends Component {
           rows="10"
         />
         <Link to="/posts">
-          <button onClick={this.handleSubmit}>Submit</button>
-        </Link>
+            <input type="submit" onClick={() => this.handleSubmit()} value="Get Started" />
+          </Link>
       </form>
     );
   }

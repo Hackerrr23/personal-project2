@@ -8,7 +8,7 @@
   flex-wrap: nowrap;
   justify-content: space-around;
   align-items: center;
-  align-content: stretch;
+  /* align-content: stretch; */
   width: 60vw;
   margin: 0 auto;
   /* width: 500px; */

@@ -46,8 +46,8 @@ class Home extends Component {
           <div className="container2">
           <img src={user.profile_pic} alt="Avatar"/>
            <div className="new">
-           <Link to={`/users/${user.id}`}><h4><b>{user.username}</b></h4></Link>
-            <p>{user.profession}</p> 
+           <Link to={`/users/${user.id}`}><h3><b>{user.username}</b></h3></Link>
+            <h2>{user.profession}</h2> 
           </div>
           </div>
         </div>

@@ -24,6 +24,23 @@ class CurrentUser extends Component {
       this.setState({ pref: res.data });
     });
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.pref.length !== prevState.pref.length) {
+      //   this.setState({
+        const { user } = this.props;
+
+      //     posts: this.state.posts
+      //   });
+      console.log("hit test");
+      axios.get(`/api/current/${user.id}`).then(res => {
+        console.log(res.data);
+        this.setState({
+          pref: res.data
+        });
+      });
+    }
+  }
+
   deletePreference = () => {
     const { user } = this.props;
     axios.delete(`/api/deletePref/${user.id}`).then(res => {
@@ -85,6 +102,7 @@ class CurrentUser extends Component {
     }
 
     const currentInfo = this.state.pref.map(preference => {
+      console.log(preference)
       const { rooms, gender, smoke, pets, profession, bio } = this.state;
       return (
         <div key={preference.id}>
@@ -92,7 +110,7 @@ class CurrentUser extends Component {
             <h2>Your Information</h2>
 
             <div className="card card_current">
-              <img src={this.props.user.profile_pic} alt="Avatar" />
+              <img src={preference.profile_pic} alt="Avatar" />
               <div className="container">
                 <h3>
                   <span>Number of Rooms You Want:</span>
@@ -119,9 +137,7 @@ class CurrentUser extends Component {
                   {preference.bio}
                 </h3>
                 <div id="pref-buttons">
-                  <button onClick={this.deletePreference}>
-                    DELETE
-                  </button>
+                  <button onClick={this.deletePreference}>DELETE</button>
                   <button onClick={() => this.setState({ addOrEdit: true })}>
                     UPDATE
                   </button>
@@ -205,12 +221,7 @@ class CurrentUser extends Component {
       );
     });
 
-    return (
-      <div>
-        hello from current
-        {currentInfo}
-      </div>
-    );
+    return <div>{currentInfo}</div>;
   }
 }
 const mapStateToProps = state => {

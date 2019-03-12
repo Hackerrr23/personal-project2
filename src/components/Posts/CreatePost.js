@@ -48,6 +48,19 @@ class CreatePost extends Component {
         });
       });
     }
+    // if (this.state.posts.length !== prevState.posts.length) {
+    //   //   this.setState({
+
+    //   //     posts: this.state.posts
+    //   //   });
+    //   console.log("hit test");
+    //   axios.get("/api/comments").then(res => {
+    //     console.log(res.data);
+    //     this.setState({
+    //       posts: res.data
+    //     });
+    //   });
+    // }
   }
 
   handleChange = event => {

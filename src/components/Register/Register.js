@@ -103,7 +103,7 @@ class Register extends Component {
             <input
               type="submit"
               onClick={() => this.addAndClear()}
-              value="Login"
+              value="Register"
             />
           </Link>
         </form>
